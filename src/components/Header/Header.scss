@@ -1,0 +1,62 @@
+@import "../Layout/Layout.scss";
+header {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+
+  @media (min-width: 1024px) {
+    padding: 20px;
+    // align-items: baseline;
+  }
+  a {
+    font-size: 1.333em;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .site-nav {
+    a {
+      margin-left: 20px;
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+  }
+}
+.mobile-nav {
+  width: 100vw;
+  background-color: $background;
+  position: absolute;
+  top: 75px;
+  left: 0;
+  bottom: 0;
+  display: none;
+  border-left: 1px solid $white;
+  .mobile-nav-heading {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &.open {
+    display: block;
+    margin-left: -1px;
+    width: calc(100vw + 1px);
+    overflow: hidden;
+    padding-top: 50px;
+    a {
+      font-size: 2em;
+      display: block;
+      margin-bottom: 20px;
+      padding-left: 10px;
+      text-decoration: none;
+    }
+  }
+}

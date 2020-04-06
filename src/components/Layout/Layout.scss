@@ -1,0 +1,30 @@
+$background: #191d1e;
+$white: #fff;
+$font: "Zwizz", "Helvetica Neue", Helvetica, sans-serif;
+
+@font-face {
+  font-family: "Zwizz";
+  src: url("../../font/Zwizz-Regular.eot");
+  src: url("../../font/Zwizz-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../../font/Zwizz-Regular.woff2") format("woff2"),
+    url("../../font/Zwizz-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: $font;
+  font-size: 100%;
+  background-color: $background;
+  color: $white;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
