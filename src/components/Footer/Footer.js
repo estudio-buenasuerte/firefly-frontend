@@ -17,12 +17,16 @@ const FooterWrapper = styled.footer`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    position: absolute;
+    z-index: 10;
     h2 {
       margin: 0;
     }
+
     li {
       list-style-image: url(${ArrowBlack});
     }
+
     @media (min-width: 1024px) {
       padding: 20px;
       flex-direction: row;
@@ -44,12 +48,23 @@ const Heading = styled.header`
 
   @media (min-width: 1024px) {
     .logo-desc {
+      h2 {
+        font-size: 2rem;
+      }
       p {
         max-width: 50%;
       }
     }
     .footer-icon {
       display: block;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    .logo-desc {
+      h2 {
+        font-size: 2.6666666667rem;
+      }
     }
   }
 `;
@@ -67,6 +82,15 @@ const Section = styled.section`
   &.footer-links {
     order: 3;
     margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+
+    .contact {
+      order: 2;
+    }
+    .good {
+      order: 1;
+    }
   }
   &.footer-form {
     order: 2;
@@ -76,6 +100,17 @@ const Section = styled.section`
     &.footer-links {
       order: 2;
       margin-bottom: 0;
+      flex-direction: row;
+
+      .contact {
+        width: calc(50% - 20px);
+        padding-right: 20px;
+        order: 1;
+      }
+
+      .good {
+        order: 2;
+      }
     }
     &.footer-form {
       order: 3;
@@ -87,7 +122,7 @@ const List = styled.ul`
   padding: 0%;
   margin: 0 0 40px 0;
   li {
-    margin: 0 0 10px 20px;
+    margin: 0 0 10px 25px;
     padding-left: 5px;
     list-style-image: url(${ArrowWhite});
     a {
@@ -232,32 +267,42 @@ const Footer = ({ slimFooter }) => {
           </Heading>
 
           <Section className="footer-links">
-            <List className="connect">
-              <Title>Connect</Title>
-              {footerData.connectList.list.map((item) => {
-                return (
-                  <li key={item.url}>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                );
-              })}
-            </List>
-            <List className="about">
-              <Title>About</Title>
-              {footerData.aboutList.list.map((item) => {
-                return (
-                  <li key={item.url}>
-                    <Link to={item.url}>{item.title}</Link>
-                  </li>
-                );
-              })}
-            </List>
+            <aside className="contact">
+              <List className="connect">
+                <Title>Connect</Title>
+                {footerData.connectList.list.map((item) => {
+                  return (
+                    <li key={item.url}>
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  );
+                })}
+              </List>
+              <List className="about">
+                <Title>About</Title>
+                {footerData.aboutList.list.map((item) => {
+                  return (
+                    <li key={item.url}>
+                      <Link to={item.url}>{item.title}</Link>
+                    </li>
+                  );
+                })}
+              </List>
+            </aside>
+            <aside className="good">
+              <List className="connect">
+                <Title>Our shows are perfect for</Title>
+                {footerData.goodForList.list.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </List>
+            </aside>
           </Section>
           <Section className="footer-form">
             <Title>Let's Work Together</Title>

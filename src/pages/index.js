@@ -8,15 +8,17 @@ import Pancake from "../images/Project_Graphic_DS_Drones_.json";
 import ArrowWhite from "../images/arrow-white.svg";
 import BlockContent from "@sanity/block-content-to-react";
 
-const HomeWrapper = styled.main`
-  /* padding: 75px 0px 10px; */
-`;
+const HomeWrapper = styled.main``;
 
 const HeroSection = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 75vh;
   background-position: center;
   background-size: cover;
+
+  @media (min-width: 1024px) {
+    height: 100vh;
+  }
 `;
 
 const HeroText = styled.section`
@@ -44,7 +46,7 @@ const HeroText = styled.section`
 `;
 
 const LottieSection = styled.section`
-  padding: 0 10px;
+  padding: 0 10px 75px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,7 +90,7 @@ const List = styled.ul`
   margin: 40px 0 40px 0;
 
   li {
-    margin: 0 0 10px 20px;
+    margin: 0 0 10px 25px;
     padding-left: 5px;
     list-style-image: url(${ArrowWhite});
 
