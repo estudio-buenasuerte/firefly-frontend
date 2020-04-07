@@ -87,7 +87,8 @@ const List = styled.ul`
   padding: 0%;
   margin: 0 0 40px 0;
   li {
-    margin: 0 0 10px 1.5em;
+    margin: 0 0 10px 20px;
+    padding-left: 5px;
     list-style-image: url(${ArrowWhite});
     a {
       text-decoration: none;
@@ -108,8 +109,9 @@ const Form = styled.form`
   margin-bottom: 40px;
 
   label {
-    /* visibility: hidden; */
-    display: none;
+    visibility: hidden;
+    position: absolute;
+    left: 999999999px;
   }
 
   input,
@@ -121,10 +123,17 @@ const Form = styled.form`
     border-bottom: 1px solid;
     background-color: transparent;
     width: 100%;
+    font-size: 1rem;
+
+    &:focus {
+      outline: 1px solid transparent;
+    }
+
     &.name,
     &.email {
       width: calc(50% - 10px);
     }
+
     &::placeholder {
       color: #6b6b6b;
       font-size: 1rem;
@@ -198,7 +207,10 @@ const Footer = ({ slimFooter }) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    alert("TBD");
+    const { name, email, subject, message } = e.target;
+    alert(
+      `Hi, ${name.value}. We'll send an email from ${email.value} when we're ready.`
+    );
   };
 
   return (
@@ -224,7 +236,7 @@ const Footer = ({ slimFooter }) => {
               <Title>Connect</Title>
               {footerData.connectList.list.map((item) => {
                 return (
-                  <li key={item._key}>
+                  <li key={item.url}>
                     <a
                       href={item.url}
                       target="_blank"
@@ -240,7 +252,7 @@ const Footer = ({ slimFooter }) => {
               <Title>About</Title>
               {footerData.aboutList.list.map((item) => {
                 return (
-                  <li key={item._key}>
+                  <li key={item.url}>
                     <Link to={item.url}>{item.title}</Link>
                   </li>
                 );
@@ -293,7 +305,7 @@ const Footer = ({ slimFooter }) => {
         </React.Fragment>
       )}
       <CreditsWrapper>
-        <small>©{new Date().getFullYear()} Firefly Drone Shows</small>
+        <small>© {new Date().getFullYear()} Firefly Drone Shows</small>
         <small>
           Site by{" "}
           <a

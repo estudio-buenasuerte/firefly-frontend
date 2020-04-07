@@ -17,6 +17,9 @@ html {
   font-size: 18px;
 }
 
+#___gatsby {
+  overflow-x: hidden;
+}
 body {
   font-family: $font;
   font-size: 100%;
@@ -28,4 +31,9 @@ body {
 
 a {
   color: inherit;
+}
+h1,
+h2,
+h3 {
+  font-weight: normal;
 }

@@ -1,14 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 // import "reset-css";
 import "./Layout.scss";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, slimFooter }) => {
   return (
     <>
       <Header />
-      <main className="site-wrapper">{children}</main>
+      {children}
+      <Footer slimFooter={slimFooter} />
     </>
   );
 };

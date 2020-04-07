@@ -9,7 +9,8 @@ import "../Layout/Layout.scss";
 const HeaderWrapper = styled.header`
   padding: 10px;
   display: flex;
-  display: none;
+  /* display: none; */
+  z-index: 9;
   justify-content: space-between;
   align-items: flex-start;
   position: fixed;
@@ -40,9 +41,10 @@ const HeaderWrapper = styled.header`
 
 const MobileNav = styled.nav`
   width: 100vw;
-  background-color: $background;
-  position: absolute;
-  top: 75px;
+  background-color: #191d1e;
+  position: fixed;
+  z-index: 2;
+  top: 0;
   left: 0;
   bottom: 0;
   display: none;
@@ -59,7 +61,7 @@ const MobileNav = styled.nav`
     margin-left: -1px;
     width: calc(100vw + 1px);
     overflow: hidden;
-    padding-top: 50px;
+    padding-top: 100px;
     a {
       font-size: 2em;
       display: block;
