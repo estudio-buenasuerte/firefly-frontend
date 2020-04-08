@@ -9,6 +9,7 @@ import ArrowBlack from "../../images/arrow-black.svg";
 
 const FooterWrapper = styled.footer`
   box-sizing: border-box;
+
   &.full {
     background-color: #d5dee2;
     padding: 10px;
@@ -31,6 +32,24 @@ const FooterWrapper = styled.footer`
       padding: 20px;
       flex-direction: row;
     }
+  }
+
+  &.slim {
+    padding: 10px;
+
+    @media (min-height: 1024px) {
+      padding: 20px;
+    }
+  }
+`;
+
+const SlimFooter = styled.section`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
   }
 `;
 
@@ -114,6 +133,46 @@ const Section = styled.section`
     }
     &.footer-form {
       order: 3;
+    }
+  }
+`;
+
+const SlimTitleSection = styled.section`
+  box-sizing: border-box;
+  width: 100%;
+
+  h3 {
+    margin: 0 0 -0.25em 0;
+  }
+
+  @media (min-width: 1024px) {
+    width: 50%;
+    padding-right: 20px;
+
+    h3 {
+      font-size: 1.5em;
+    }
+  }
+`;
+
+const SlimLinkSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+  aside {
+    a {
+      display: block;
+      text-decoration: none;
+      line-height: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+    aside {
+      width: calc(50% - 20px);
     }
   }
 `;
@@ -251,7 +310,25 @@ const Footer = ({ slimFooter }) => {
   return (
     <FooterWrapper className={`footer ${slimFooter ? "slim" : "full"}`}>
       {slimFooter ? (
-        ""
+        <SlimFooter>
+          <SlimTitleSection className="">
+            <h3>Firefly Drone Shows</h3>
+            <p>Detroit, MI</p>
+          </SlimTitleSection>
+          <SlimLinkSection>
+            <aside>
+              <a href="mailto:info@fireflydroneshows.com">
+                info@fireflydroneshows.com
+              </a>
+              <a href="tel:12484616615">+1 248 461 6615</a>
+            </aside>
+            <aside>
+              <Link to={"/work"}>Work</Link>
+              <Link to={"/options"}>Options</Link>
+              <Link to={"/about"}>About</Link>
+            </aside>
+          </SlimLinkSection>
+        </SlimFooter>
       ) : (
         <React.Fragment>
           <Heading>

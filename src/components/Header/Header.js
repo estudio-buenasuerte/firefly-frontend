@@ -9,7 +9,6 @@ import "../Layout/Layout.scss";
 const HeaderWrapper = styled.header`
   padding: 10px;
   display: flex;
-  /* display: none; */
   z-index: 9;
   justify-content: space-between;
   align-items: flex-start;
