@@ -25,7 +25,9 @@
     "react-lottie": "^1.2.3",
     "react-responsive": "^8.0.3",
     "reset-css": "^5.0.1",
-    "styled-components": "^5.1.0"
+    "sharp": "^0.25.2",
+    "styled-components": "^5.1.0",
+    "video-react": "^0.14.1"
   },
   "devDependencies": {
     "prettier": "^1.19.1"

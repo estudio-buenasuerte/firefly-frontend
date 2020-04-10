@@ -36,7 +36,6 @@ const FooterWrapper = styled.footer`
 
   &.slim {
     padding: 10px;
-
     @media (min-height: 1024px) {
       padding: 20px;
     }
