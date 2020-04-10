@@ -18,7 +18,7 @@ const HeroSection = styled.section`
 `;
 
 const AboutSection = styled.section`
-  padding: 100px 10px;
+  padding: 100px 20px;
   background-color: #d5dee2;
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@ const AboutSection = styled.section`
 `;
 
 const ConnectSection = styled.section`
-  padding: 100px 10px;
+  padding: 100px 20px;
   display: flex;
   flex-direction: column;
   @media (min-width: 1024px) {

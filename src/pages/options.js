@@ -11,7 +11,7 @@ import BlockContent from "@sanity/block-content-to-react";
 const OptionsSection = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
 
   @media (min-width: 1024px) {
     padding: 150px 20px 20px;

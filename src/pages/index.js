@@ -22,7 +22,7 @@ const HeroSection = styled.section`
 `;
 
 const HeroText = styled.section`
-  padding: 100px 10px;
+  padding: 100px 20px;
 
   h1 {
     font-size: 1.77777rem;
@@ -46,7 +46,7 @@ const HeroText = styled.section`
 `;
 
 const LottieSection = styled.section`
-  padding: 0 10px 75px;
+  padding: 0 20px 75px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -101,7 +101,7 @@ const List = styled.ul`
 `;
 
 const TextSection = styled.section`
-  padding: 150px 10px;
+  padding: 150px 20px;
   display: flex;
   flex-direction: column;
 

@@ -7,7 +7,7 @@ import styled from "styled-components";
 import "../Layout/Layout.scss";
 
 const HeaderWrapper = styled.header`
-  padding: 10px;
+  padding: 20px;
   display: flex;
   z-index: 9;
   justify-content: space-between;

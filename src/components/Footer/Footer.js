@@ -9,10 +9,10 @@ import ArrowBlack from "../../images/arrow-black.svg";
 
 const FooterWrapper = styled.footer`
   box-sizing: border-box;
+  padding: 20px;
 
   &.full {
     background-color: #d5dee2;
-    padding: 10px;
     min-height: 100vh;
     color: black;
     display: flex;
@@ -35,7 +35,6 @@ const FooterWrapper = styled.footer`
   }
 
   &.slim {
-    padding: 10px;
     @media (min-height: 1024px) {
       padding: 20px;
     }
