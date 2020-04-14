@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
-import Lottie from "react-lottie";
+import Transition from "../images/Transition_800.gif";
 import Pancake from "../images/Project_Graphic_DS_Drones_.json";
 import ArrowWhite from "../images/arrow-white.svg";
 import BlockContent from "@sanity/block-content-to-react";
@@ -67,7 +67,7 @@ const LottieSection = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 0 20px;
+    padding: 0 20px 150px;
     flex-direction: row;
     justify-content: space-between;
 
@@ -189,7 +189,7 @@ const Index = () => {
 
         <LottieSection>
           <aside className="animation">
-            <Lottie options={lottieOpions} />
+            <img src={Transition} alt="transition" />
           </aside>
           <aside className="section-info">
             {homeData.section1Heading && <h2>{homeData.section1Heading}</h2>}

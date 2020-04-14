@@ -3,9 +3,9 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
-import Saturn100 from "../images/100_Planet_V3.gif";
-import Saturn200 from "../images/200_Planet_V3.gif";
-import Saturn300 from "../images/300_Planet_V3.gif";
+import Saturn100 from "../images/100_Drone_800.gif";
+import Saturn200 from "../images/200_Drone_800.gif";
+import Saturn300 from "../images/300_Drone_800.gif";
 import BlockContent from "@sanity/block-content-to-react";
 
 const OptionsSection = styled.section`
