@@ -11,7 +11,7 @@ import BlockContent from "@sanity/block-content-to-react";
 const OptionsSection = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 100px 20px;
 
   @media (min-width: 1024px) {
     padding: 150px 20px 20px;
@@ -23,6 +23,8 @@ const OptionsSection = styled.section`
 const OptionGifSection = styled.aside`
   width: 100%;
 
+  box-sizing: border-box;
+
   img {
     max-width: 100%;
     width: 100%;
@@ -30,6 +32,7 @@ const OptionGifSection = styled.aside`
 
   @media (min-width: 1024px) {
     width: 33.33%;
+    padding: 0 20px;
   }
 `;
 

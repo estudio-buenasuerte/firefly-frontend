@@ -51,6 +51,11 @@ const LottieSection = styled.section`
   flex-direction: column;
   align-items: center;
 
+  img {
+    max-width: 100%;
+    width: 100%;
+  }
+
   .animation,
   .section-info {
     width: 100%;
