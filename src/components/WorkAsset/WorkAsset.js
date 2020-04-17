@@ -34,12 +34,6 @@ const AssetWrapper = styled.article`
       outline: 1px solid transparent;
     }
 
-    /* .video-react-time-divider,
-    .video-react-duration,
-    .video-react-progress-control {
-      display: none;
-    } */
-
     .video-react-big-play-button {
       display: none;
     }
@@ -127,8 +121,9 @@ const SubTitle = styled.p`
   }
 `;
 
-const WorkAsset = ({ asset }) => {
+const WorkAsset = ({ asset, hideControls, autoPlay }) => {
   const isAssetImage = asset.type === "image/jpeg";
+
   return (
     <AssetWrapper className={asset.layout}>
       {asset && (
@@ -138,12 +133,12 @@ const WorkAsset = ({ asset }) => {
           ) : (
             <Player
               playsInline
-              autoPlay={false}
+              autoPlay={autoPlay || false}
               loop={true}
               muted={false}
               src={asset.url}
             >
-              <ControlBar autoHide={false}>
+              <ControlBar autoHide={true}>
                 <CurrentTimeDisplay order={4.1} />
                 <VolumeMenuButton disabled />
               </ControlBar>
@@ -151,7 +146,7 @@ const WorkAsset = ({ asset }) => {
           )}
         </React.Fragment>
       )}
-      <Title>{asset.title}</Title>
+      {asset.title && <Title>{asset.title}</Title>}
       {asset.description && <SubTitle>{asset.description}</SubTitle>}
     </AssetWrapper>
   );

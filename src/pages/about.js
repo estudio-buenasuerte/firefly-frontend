@@ -8,12 +8,37 @@ import ArrowBlack from "../images/arrow-black.svg";
 
 const HeroSection = styled.section`
   width: 100%;
-  height: 75vh;
+
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+
+  img {
+    max-width: 100%;
+    width: 100%;
+  }
+`;
+
+const HeroText = styled.section`
+  padding: 100px 20px;
+
+  h1 {
+    font-size: 1.77777rem;
+    margin: 0;
+    font-weight: normal;
+  }
 
   @media (min-width: 1024px) {
-    height: 100vh;
+    padding: 300px 20px;
+
+    h1 {
+      font-size: 3.5555555rem;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    h1 {
+      font-size: 5rem;
+    }
   }
 `;
 
@@ -160,6 +185,7 @@ const About = () => {
             }
           }
           heroText
+          aboutHeading
           _rawAboutDescription
           contact {
             list {
@@ -192,11 +218,22 @@ const About = () => {
     <Layout slimFooter={true}>
       <SEO title="About" />
 
-      <HeroSection
-        style={{
-          backgroundImage: "url(" + aboutData.heroAsset.asset.url + ")",
-        }}
-      />
+      <HeroSection>
+        {aboutData.heroAsset.asset.url.split(".")[
+          aboutData.heroAsset.asset.url.split(".").length - 1
+        ] === "gif" ||
+        aboutData.heroAsset.asset.url.split(".")[
+          aboutData.heroAsset.asset.url.split(".").length - 1
+        ] === "png" ? (
+          <img src={aboutData.heroAsset.asset.url} alt="Firefly Drone Shows" />
+        ) : (
+          ""
+        )}
+      </HeroSection>
+
+      <HeroText>
+        {aboutData.aboutHeading && <h1>{aboutData.aboutHeading}</h1>}
+      </HeroText>
 
       <AboutSection>
         <aside className="title">

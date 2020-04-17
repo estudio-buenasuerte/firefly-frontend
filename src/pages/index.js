@@ -14,7 +14,7 @@ const HomeWrapper = styled.main``;
 
 const HeroSection = styled.section`
   width: 100%;
-  height: 75vh;
+
   background-position: center;
   background-size: cover;
 
@@ -25,6 +25,9 @@ const HeroSection = styled.section`
 
   @media (min-width: 1024px) {
     height: 100vh;
+    img {
+      opacity: 0;
+    }
   }
 `;
 
@@ -233,6 +236,8 @@ const Index = () => {
     slidesToScroll: 1,
   };
 
+  // debugger;
+
   return (
     <Layout slimFooter={false}>
       <SEO title="Home" />
@@ -241,7 +246,18 @@ const Index = () => {
           style={{
             backgroundImage: "url(" + homeData.heroAsset.asset.url + ")",
           }}
-        />
+        >
+          {homeData.heroAsset.asset.url.split(".")[
+            homeData.heroAsset.asset.url.split(".").length - 1
+          ] === "gif" ||
+          homeData.heroAsset.asset.url.split(".")[
+            homeData.heroAsset.asset.url.split(".").length - 1
+          ] === "png" ? (
+            <img src={homeData.heroAsset.asset.url} alt="Firefly Drone Shows" />
+          ) : (
+            ""
+          )}
+        </HeroSection>
 
         <HeroText>
           <h1>{homeData.heroText}</h1>

@@ -378,9 +378,7 @@ const Footer = ({ slimFooter }) => {
                 {footerData.connectList.list.map((item) => {
                   return (
                     <li key={item.url}>
-                      <a href={item.url} target="_blank">
-                        {item.title}
-                      </a>
+                      <a href={item.url}>{item.title}</a>
                     </li>
                   );
                 })}

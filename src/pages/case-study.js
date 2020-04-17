@@ -4,6 +4,12 @@ import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
 import BlockContent from "@sanity/block-content-to-react";
+import {
+  Player,
+  ControlBar,
+  CurrentTimeDisplay,
+  VolumeMenuButton,
+} from "video-react";
 
 const HeroSection = styled.section`
   position: relative;
@@ -64,9 +70,18 @@ const StepSectionInfo = styled.aside`
 const StepSectionAsset = styled.aside`
   padding: 50px 10px;
   width: 100%;
+
   img {
     max-width: 100%;
     width: 100%;
+  }
+
+  .video-react-control-bar {
+    display: none;
+  }
+
+  video:focus {
+    outline: 1px solid transparent;
   }
 
   @media (min-width: 1024px) {
@@ -176,13 +191,27 @@ const CaseStudy = () => {
           ] === "gif" ||
           caseStudy.step1Asset.asset.url.split(".")[
             caseStudy.step1Asset.asset.url.split(".").length - 1
-          ] === "png" ? (
+          ] === "png" ||
+          caseStudy.step1Asset.asset.url.split(".")[
+            caseStudy.step1Asset.asset.url.split(".").length - 1
+          ] === "jpg" ? (
             <img
               src={caseStudy.step1Asset.asset.url}
               alt={caseStudy.step1Title}
             />
           ) : (
-            ""
+            <Player
+              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              src={caseStudy.step1Asset.asset.url}
+            >
+              <ControlBar autoHide={true}>
+                <CurrentTimeDisplay order={4.1} />
+                <VolumeMenuButton disabled />
+              </ControlBar>
+            </Player>
           )}
         </StepSectionAsset>
       </Step>
@@ -197,13 +226,27 @@ const CaseStudy = () => {
           ] === "gif" ||
           caseStudy.step2Asset.asset.url.split(".")[
             caseStudy.step2Asset.asset.url.split(".").length - 1
-          ] === "png" ? (
+          ] === "png" ||
+          caseStudy.step2Asset.asset.url.split(".")[
+            caseStudy.step2Asset.asset.url.split(".").length - 1
+          ] === "jpg" ? (
             <img
               src={caseStudy.step2Asset.asset.url}
               alt={caseStudy.step2Title}
             />
           ) : (
-            ""
+            <Player
+              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              src={caseStudy.step2Asset.asset.url}
+            >
+              <ControlBar autoHide={true}>
+                <CurrentTimeDisplay order={4.1} />
+                <VolumeMenuButton disabled />
+              </ControlBar>
+            </Player>
           )}
         </StepSectionAsset>
       </Step>
@@ -218,13 +261,27 @@ const CaseStudy = () => {
           ] === "gif" ||
           caseStudy.step3Asset.asset.url.split(".")[
             caseStudy.step3Asset.asset.url.split(".").length - 1
-          ] === "png" ? (
+          ] === "png" ||
+          caseStudy.step3Asset.asset.url.split(".")[
+            caseStudy.step3Asset.asset.url.split(".").length - 1
+          ] === "jpg" ? (
             <img
               src={caseStudy.step3Asset.asset.url}
               alt={caseStudy.step3Title}
             />
           ) : (
-            ""
+            <Player
+              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              src={caseStudy.step3Asset.asset.url}
+            >
+              <ControlBar autoHide={true}>
+                <CurrentTimeDisplay order={4.1} />
+                <VolumeMenuButton disabled />
+              </ControlBar>
+            </Player>
           )}
         </StepSectionAsset>
       </Step>
@@ -239,13 +296,27 @@ const CaseStudy = () => {
           ] === "gif" ||
           caseStudy.step4Asset.asset.url.split(".")[
             caseStudy.step4Asset.asset.url.split(".").length - 1
-          ] === "png" ? (
+          ] === "png" ||
+          caseStudy.step4Asset.asset.url.split(".")[
+            caseStudy.step4Asset.asset.url.split(".").length - 1
+          ] === "jpg" ? (
             <img
               src={caseStudy.step4Asset.asset.url}
               alt={caseStudy.step4Title}
             />
           ) : (
-            ""
+            <Player
+              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              src={caseStudy.step4Asset.asset.url}
+            >
+              <ControlBar autoHide={true}>
+                <CurrentTimeDisplay order={4.1} />
+                <VolumeMenuButton disabled />
+              </ControlBar>
+            </Player>
           )}
         </StepSectionAsset>
       </Step>
@@ -260,13 +331,27 @@ const CaseStudy = () => {
           ] === "gif" ||
           caseStudy.step5Asset.asset.url.split(".")[
             caseStudy.step5Asset.asset.url.split(".").length - 1
-          ] === "png" ? (
+          ] === "png" ||
+          caseStudy.step5Asset.asset.url.split(".")[
+            caseStudy.step5Asset.asset.url.split(".").length - 1
+          ] === "jpg" ? (
             <img
               src={caseStudy.step5Asset.asset.url}
               alt={caseStudy.step5Title}
             />
           ) : (
-            ""
+            <Player
+              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              src={caseStudy.step5Asset.asset.url}
+            >
+              <ControlBar autoHide={true}>
+                <CurrentTimeDisplay order={4.1} />
+                <VolumeMenuButton disabled />
+              </ControlBar>
+            </Player>
           )}
         </StepSectionAsset>
       </Step>
@@ -281,13 +366,27 @@ const CaseStudy = () => {
           ] === "gif" ||
           caseStudy.step6Asset.asset.url.split(".")[
             caseStudy.step6Asset.asset.url.split(".").length - 1
-          ] === "png" ? (
+          ] === "png" ||
+          caseStudy.step6Asset.asset.url.split(".")[
+            caseStudy.step6Asset.asset.url.split(".").length - 1
+          ] === "jpg" ? (
             <img
               src={caseStudy.step6Asset.asset.url}
               alt={caseStudy.step6Title}
             />
           ) : (
-            ""
+            <Player
+              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              src={caseStudy.step6Asset.asset.url}
+            >
+              <ControlBar autoHide={true}>
+                <CurrentTimeDisplay order={4.1} />
+                <VolumeMenuButton disabled />
+              </ControlBar>
+            </Player>
           )}
         </StepSectionAsset>
       </Step>
