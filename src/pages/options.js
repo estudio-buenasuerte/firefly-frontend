@@ -3,10 +3,11 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
-import Saturn100 from "../images/100_Drone_800.gif";
-import Saturn200 from "../images/200_Drone_800.gif";
-import Saturn300 from "../images/300_Drone_800.gif";
+import Saturn100 from "../images/100_Mobile.mp4";
+import Saturn200 from "../images/200_Mobile.mp4";
+import Saturn300 from "../images/300_Mobile.mp4";
 import BlockContent from "@sanity/block-content-to-react";
+import { Player } from "video-react";
 
 const OptionsSection = styled.section`
   display: flex;
@@ -20,7 +21,7 @@ const OptionsSection = styled.section`
   }
 `;
 
-const OptionGifSection = styled.aside`
+const OptionVidSection = styled.aside`
   width: 100%;
 
   box-sizing: border-box;
@@ -30,9 +31,16 @@ const OptionGifSection = styled.aside`
     width: 100%;
   }
 
+  .video-react {
+    margin-bottom: 20px;
+  }
+
+  .video-react-control-bar {
+    display: none;
+  }
+
   @media (min-width: 1024px) {
-    width: 33.33%;
-    padding: 0 20px;
+    width: calc(33.33% - 13.3333px);
   }
 `;
 
@@ -207,22 +215,22 @@ const Options = () => {
       <SEO title="Options" />
 
       <OptionsSection>
-        <OptionGifSection>
-          <img src={Saturn100} />
+        <OptionVidSection>
+          <Player autoPlay={true} loop={true} src={Saturn100} />
 
           <BigTitle>100 Drones</BigTitle>
           <h3>{optionsData.oneHundredTitle}</h3>
-        </OptionGifSection>
-        <OptionGifSection>
-          <img src={Saturn200} />
+        </OptionVidSection>
+        <OptionVidSection>
+          <Player autoPlay={true} loop={true} src={Saturn200} />
           <BigTitle>200 Drones</BigTitle>
           <h3>{optionsData.twoHundredTitle}</h3>
-        </OptionGifSection>
-        <OptionGifSection>
-          <img src={Saturn300} />
+        </OptionVidSection>
+        <OptionVidSection>
+          <Player autoPlay={true} loop={true} src={Saturn300} />
           <BigTitle>300 Drones</BigTitle>
           <h3>{optionsData.threeHundredTitle}</h3>
-        </OptionGifSection>
+        </OptionVidSection>
       </OptionsSection>
 
       <StockVSCustom>

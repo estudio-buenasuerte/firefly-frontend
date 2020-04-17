@@ -3,9 +3,10 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
-import Transition from "../images/Transition_800.gif";
+import Transition from "../images/Transition_Mobile.mp4";
 import ArrowWhite from "../images/arrow-white.svg";
 import BlockContent from "@sanity/block-content-to-react";
+import { Player } from "video-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -265,7 +266,12 @@ const Index = () => {
 
         <LottieSection>
           <aside className="animation">
-            <img src={Transition} alt="transition" />
+            <Player
+              autoPlay={true}
+              loop={true}
+              src={Transition}
+              alt="transition"
+            />
           </aside>
           <aside className="section-info">
             {homeData.section1Heading && <h2>{homeData.section1Heading}</h2>}
