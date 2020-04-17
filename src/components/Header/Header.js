@@ -19,8 +19,8 @@ const HeaderWrapper = styled.header`
 
   @media (min-width: 1024px) {
     padding: 20px;
-    // align-items: baseline;
   }
+
   a {
     font-size: 1.333em;
     text-decoration: none;
@@ -28,6 +28,17 @@ const HeaderWrapper = styled.header`
       text-decoration: underline;
     }
   }
+
+  .site-logo {
+    img {
+      max-height: 32px;
+
+      @media (min-width: 1024px) {
+        max-height: 46px;
+      }
+    }
+  }
+
   .site-nav {
     a {
       margin-left: 20px;
@@ -47,9 +58,9 @@ const MobileNav = styled.nav`
   left: 0;
   bottom: 0;
   display: none;
-  border-left: 1px solid $white;
+
   .mobile-nav-heading {
-    padding: 10px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -57,15 +68,14 @@ const MobileNav = styled.nav`
 
   &.open {
     display: block;
-    margin-left: -1px;
-    width: calc(100vw + 1px);
+    width: 100vw;
     overflow: hidden;
     padding-top: 100px;
     a {
       font-size: 2em;
       display: block;
       margin-bottom: 20px;
-      padding-left: 10px;
+      padding-left: 20px;
       text-decoration: none;
     }
   }
