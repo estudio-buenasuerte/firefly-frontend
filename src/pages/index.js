@@ -269,6 +269,7 @@ const Index = () => {
             <Player
               autoPlay={true}
               loop={true}
+              playsInline={true}
               src={Transition}
               alt="transition"
             />

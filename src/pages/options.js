@@ -216,18 +216,33 @@ const Options = () => {
 
       <OptionsSection>
         <OptionVidSection>
-          <Player autoPlay={true} loop={true} src={Saturn100} />
+          <Player
+            playsInline={true}
+            autoPlay={true}
+            loop={true}
+            src={Saturn100}
+          />
 
           <BigTitle>100 Drones</BigTitle>
           <h3>{optionsData.oneHundredTitle}</h3>
         </OptionVidSection>
         <OptionVidSection>
-          <Player autoPlay={true} loop={true} src={Saturn200} />
+          <Player
+            playsInline={true}
+            autoPlay={true}
+            loop={true}
+            src={Saturn200}
+          />
           <BigTitle>200 Drones</BigTitle>
           <h3>{optionsData.twoHundredTitle}</h3>
         </OptionVidSection>
         <OptionVidSection>
-          <Player autoPlay={true} loop={true} src={Saturn300} />
+          <Player
+            playsInline={true}
+            autoPlay={true}
+            loop={true}
+            src={Saturn300}
+          />
           <BigTitle>300 Drones</BigTitle>
           <h3>{optionsData.threeHundredTitle}</h3>
         </OptionVidSection>

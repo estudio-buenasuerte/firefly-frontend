@@ -132,7 +132,7 @@ const WorkAsset = ({ asset, hideControls, autoPlay }) => {
             <img src={asset.url} />
           ) : (
             <Player
-              playsInline
+              playsInline={true}
               autoPlay={autoPlay || false}
               loop={true}
               muted={false}
