@@ -4,9 +4,11 @@ import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
 import Transition from "../images/Transition_800.gif";
-import Pancake from "../images/Project_Graphic_DS_Drones_.json";
 import ArrowWhite from "../images/arrow-white.svg";
 import BlockContent from "@sanity/block-content-to-react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HomeWrapper = styled.main``;
 
@@ -15,6 +17,11 @@ const HeroSection = styled.section`
   height: 75vh;
   background-position: center;
   background-size: cover;
+
+  img {
+    max-width: 100%;
+    width: 100%;
+  }
 
   @media (min-width: 1024px) {
     height: 100vh;
@@ -140,6 +147,50 @@ const TextSection = styled.section`
   }
 `;
 
+const SliderSection = styled.section`
+  .slick-prev,
+  .slick-next {
+    width: 50px;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    z-index: 2;
+    transform: translate(0, 0);
+
+    &:before {
+      display: block;
+      content: "";
+      height: 30px;
+      width: 30px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+  .slick-prev {
+    left: 0px;
+  }
+  .slick-next {
+    right: 0;
+    /* background-color: lightpink; */
+  }
+
+  .slick-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    li button:before {
+      font-size: 10px;
+      color: white;
+      opacity: 0.75;
+    }
+    li.slick-active button:before {
+      font-size: 15px;
+      color: white;
+    }
+  }
+`;
+
 const Index = () => {
   const data = useStaticQuery(graphql`
     {
@@ -157,6 +208,8 @@ const Index = () => {
             list
           }
           heroAsset2 {
+            _key
+            _type
             asset {
               url
             }
@@ -171,13 +224,15 @@ const Index = () => {
     }
   `);
   const [homeData] = useState(data.allSanityHome.nodes[0]);
-  // debugger;
 
-  const lottieOpions = {
-    loop: true,
-    autoplay: true,
-    animationData: Pancake,
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
   };
+
   return (
     <Layout slimFooter={false}>
       <SEO title="Home" />
@@ -211,11 +266,17 @@ const Index = () => {
           </aside>
         </LottieSection>
 
-        <HeroSection
-          style={{
-            backgroundImage: "url(" + homeData.heroAsset2.asset.url + ")",
-          }}
-        />
+        <SliderSection>
+          <Slider {...sliderSettings}>
+            {homeData.heroAsset2.map((item) => (
+              <img
+                key={item._key}
+                src={item.asset.url}
+                alt="Firefly Drone Shows"
+              />
+            ))}
+          </Slider>
+        </SliderSection>
 
         <TextSection>
           <aside className="title-wrapper">

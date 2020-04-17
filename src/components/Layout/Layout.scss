@@ -20,6 +20,7 @@ html {
 #___gatsby {
   overflow-x: hidden;
 }
+
 body {
   font-family: $font;
   font-size: 100%;
@@ -36,4 +37,19 @@ h1,
 h2,
 h3 {
   font-weight: normal;
+}
+
+.slick-prev {
+  &:before {
+    background-image: url(../../images/arrow-white.svg);
+    transform: rotate(180deg);
+    margin-left: 20px;
+  }
+}
+.slick-next {
+  &:before {
+    background-image: url(../../images/arrow-white.svg);
+    margin-left: auto;
+    margin-right: 20px;
+  }
 }

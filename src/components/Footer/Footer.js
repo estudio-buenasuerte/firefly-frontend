@@ -20,6 +20,7 @@ const FooterWrapper = styled.footer`
     flex-wrap: wrap;
     position: absolute;
     z-index: 10;
+    overflow: hidden;
     h2 {
       margin: 0;
     }
@@ -178,6 +179,7 @@ const SlimLinkSection = styled.section`
 const List = styled.ul`
   padding: 0%;
   margin: 0 0 40px 0;
+
   li {
     margin: 0 0 10px 25px;
     padding-left: 5px;
@@ -185,6 +187,26 @@ const List = styled.ul`
     a {
       text-decoration: none;
     }
+  }
+
+  &.good {
+    max-width: 50ch;
+    margin: 0;
+
+    list-style: disc;
+
+    h3 {
+      width: 100%;
+    }
+
+    li {
+      width: 40%;
+      padding-right: 10px;
+      list-style-image: url();
+    }
+
+    display: flex;
+    flex-wrap: wrap;
   }
 `;
 
@@ -337,6 +359,14 @@ const Footer = ({ slimFooter }) => {
               {footerData._rawDescription && (
                 <BlockContent blocks={footerData._rawDescription} />
               )}
+              {footerData.goodForList && (
+                <List className="good">
+                  <Title>Our shows are perfect for</Title>
+                  {footerData.goodForList.list.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </List>
+              )}
             </section>
             <img src={DroneBlack} className="footer-icon" />
           </Heading>
@@ -348,11 +378,7 @@ const Footer = ({ slimFooter }) => {
                 {footerData.connectList.list.map((item) => {
                   return (
                     <li key={item.url}>
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={item.url} target="_blank">
                         {item.title}
                       </a>
                     </li>
@@ -368,14 +394,6 @@ const Footer = ({ slimFooter }) => {
                     </li>
                   );
                 })}
-              </List>
-            </aside>
-            <aside className="good">
-              <List className="connect">
-                <Title>Our shows are perfect for</Title>
-                {footerData.goodForList.list.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
               </List>
             </aside>
           </Section>
@@ -426,16 +444,6 @@ const Footer = ({ slimFooter }) => {
       )}
       <CreditsWrapper>
         <small>© {new Date().getFullYear()} Firefly Drone Shows</small>
-        <small>
-          Site by{" "}
-          <a
-            href="https://www.buena-suerte.studio"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Buena Suerte
-          </a>
-        </small>
       </CreditsWrapper>
     </FooterWrapper>
   );
