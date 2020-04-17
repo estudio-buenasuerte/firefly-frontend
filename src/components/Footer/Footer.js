@@ -235,6 +235,8 @@ const Form = styled.form`
     margin-bottom: 1rem;
     border: none;
     border-bottom: 1px solid;
+    border-radius: 0;
+    -webkit-appearance: none;
     background-color: transparent;
     width: 100%;
     font-size: 1rem;

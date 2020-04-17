@@ -133,6 +133,8 @@ const Form = styled.form`
     margin-bottom: 1rem;
     border: none;
     color: #fff;
+    border-radius: 0;
+    -webkit-appearance: none;
     border-bottom: 1px solid #fff;
     background-color: transparent;
     width: 100%;
