@@ -347,7 +347,7 @@ const Footer = ({ slimFooter }) => {
             <aside>
               <Link to={"/work"}>Work</Link>
               <Link to={"/options"}>Options</Link>
-              <Link to={"/about"}>About</Link>
+              <Link to={"/case-study"}>Case Study</Link>
             </aside>
           </SlimLinkSection>
         </SlimFooter>
