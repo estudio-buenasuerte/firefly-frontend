@@ -3,9 +3,9 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
-import Saturn100 from "../images/100_Mobile.mp4";
-import Saturn200 from "../images/200_Mobile.mp4";
-import Saturn300 from "../images/300_Mobile.mp4";
+import Saturn100 from "../images/100_800.mp4";
+import Saturn200 from "../images/200_800.mp4";
+import Saturn300 from "../images/300_800.mp4";
 import BlockContent from "@sanity/block-content-to-react";
 import { Player } from "video-react";
 
@@ -35,8 +35,15 @@ const OptionVidSection = styled.aside`
     margin-bottom: 20px;
   }
 
-  .video-react-control-bar {
+  .video-react-control-bar,
+  .video-react-big-play-button {
     display: none;
+  }
+
+  video {
+    &:focus {
+      outline: 1px solid transparent;
+    }
   }
 
   @media (min-width: 1024px) {
@@ -92,6 +99,10 @@ const StockVSCustom = styled.section`
 
 const StockVSCustomDiv = styled.aside`
   @media (min-width: 1024px) {
+    p {
+      max-width: 65ch;
+      font-size: 20px;
+    }
     width: 50%;
     &:first-of-type {
       padding-right: 10px;
@@ -106,6 +117,9 @@ const ImageOnLeft = styled.section`
   padding: 10px;
   display: flex;
   flex-direction: column;
+  p {
+    max-width: 70ch;
+  }
 
   img {
     max-width: 100%;
@@ -116,6 +130,11 @@ const ImageOnLeft = styled.section`
     padding: 20px;
     margin: 300px 0;
     flex-direction: row;
+
+    p {
+      font-size: 20px;
+      max-width: 65ch;
+    }
 
     aside {
       width: 50%;
@@ -133,6 +152,9 @@ const ImageOnRight = styled.section`
   padding: 10px;
   display: flex;
   flex-direction: column;
+  p {
+    max-width: 70ch;
+  }
 
   img {
     max-width: 100%;
@@ -152,6 +174,11 @@ const ImageOnRight = styled.section`
     padding: 20px;
     margin: 300px 0;
     flex-direction: row;
+
+    p {
+      font-size: 20px;
+      max-width: 65ch;
+    }
 
     aside {
       width: 50%;
@@ -221,6 +248,7 @@ const Options = () => {
             autoPlay={true}
             loop={true}
             src={Saturn100}
+            muted={true}
           />
 
           <BigTitle>100 Drones</BigTitle>
@@ -232,6 +260,7 @@ const Options = () => {
             autoPlay={true}
             loop={true}
             src={Saturn200}
+            muted={true}
           />
           <BigTitle>200 Drones</BigTitle>
           <h3>{optionsData.twoHundredTitle}</h3>
@@ -242,6 +271,7 @@ const Options = () => {
             autoPlay={true}
             loop={true}
             src={Saturn300}
+            muted={true}
           />
           <BigTitle>300 Drones</BigTitle>
           <h3>{optionsData.threeHundredTitle}</h3>
@@ -281,7 +311,7 @@ const Options = () => {
         )}
         {optionsData._rawOneHundredDronesDescription && (
           <aside>
-            <MediumTitle>100 Drones</MediumTitle>
+            <BigTitle>100 Drones</BigTitle>
             <BlockContent
               blocks={optionsData._rawOneHundredDronesDescription}
             />
@@ -292,7 +322,7 @@ const Options = () => {
       <ImageOnRight>
         {optionsData._rawTwoHundredDronesDescription && (
           <aside>
-            <MediumTitle>200 Drones</MediumTitle>
+            <BigTitle>200 Drones</BigTitle>
             <BlockContent
               blocks={optionsData._rawTwoHundredDronesDescription}
             />
@@ -319,7 +349,7 @@ const Options = () => {
         )}
         {optionsData._rawThreeHundredDronesDescription && (
           <aside>
-            <MediumTitle>300 Drones</MediumTitle>
+            <BigTitle>300 Drones</BigTitle>
             <BlockContent
               blocks={optionsData._rawThreeHundredDronesDescription}
             />
