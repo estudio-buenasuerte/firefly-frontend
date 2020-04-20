@@ -93,7 +93,7 @@ const Header = (props) => {
       <HeaderWrapper>
         <aside className="site-logo">
           <Link to={"/"}>
-            <img src={Logo} />
+            <img src={Logo} alt="Firefly Logo" />
           </Link>
         </aside>
         {isDesktopOrLaptop && (
@@ -109,6 +109,7 @@ const Header = (props) => {
           <img
             className="mobile-trigger"
             src={DroneWhite}
+            alt="Firefly Logo"
             onClick={() => setHeaderOpen(!headerOpen)}
           />
         )}

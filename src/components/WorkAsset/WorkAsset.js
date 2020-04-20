@@ -129,7 +129,7 @@ const WorkAsset = ({ asset, hideControls, autoPlay }) => {
       {asset && (
         <React.Fragment>
           {isAssetImage ? (
-            <img src={asset.url} />
+            <img src={asset.url} alt={asset.title ? asset.title : ""} />
           ) : (
             <Player
               playsInline={true}

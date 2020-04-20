@@ -370,7 +370,7 @@ const Footer = ({ slimFooter }) => {
                 </List>
               )}
             </section>
-            <img src={DroneBlack} className="footer-icon" />
+            <img src={DroneBlack} alt="Firefly Drone" className="footer-icon" />
           </Heading>
 
           <Section className="footer-links">
