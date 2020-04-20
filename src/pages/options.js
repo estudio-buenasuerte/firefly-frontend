@@ -71,7 +71,7 @@ const MediumTitle = styled.h3`
   }
 `;
 
-const MediumLink = styled.a`
+const MediumLink = styled.span`
   font-size: 18px;
   text-decoration: underline;
 

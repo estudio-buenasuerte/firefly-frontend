@@ -11,7 +11,7 @@ const WorkList = styled.main`
   padding: 125px 20px;
 
   @media (min-width: 1024px) {
-    padding: 150px 10px 20px;
+    padding: 150px 10px;
     flex-direction: row;
     flex-wrap: wrap;
   }

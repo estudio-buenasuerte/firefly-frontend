@@ -82,6 +82,16 @@ const LottieSection = styled.section`
     }
   }
 
+  video {
+    &:focus {
+      outline: 1px solid transparent;
+    }
+  }
+
+  .video-react-control-bar {
+    display: none;
+  }
+
   @media (min-width: 1024px) {
     padding: 0 20px 150px;
     flex-direction: row;
