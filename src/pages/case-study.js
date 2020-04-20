@@ -14,23 +14,48 @@ import {
 const HeroSection = styled.section`
   position: relative;
 `;
+
 const HeroSectionAsset = styled.img`
   width: 100%;
+
+  @media (min-width: 1024px) {
+    margin-bottom: 0;
+  }
 `;
 
 const HeroTitleSection = styled.aside`
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
+  padding: 20px;
+
+  @media (min-width: 1024px) {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+  }
 `;
 
 const HeroTitle = styled.h1`
-  font-size: 6rem;
+  font-size: 2.5rem;
   margin: 0;
+
+  @media (min-width: 1024px) {
+    font-size: 4rem;
+    padding-right: 20px;
+  }
+
+  @media (min-width: 1400px) {
+    font-size: 6rem;
+  }
 `;
 
 const HeroSubtitle = styled.h2`
-  font-size: 1.33333333rem;
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1rem;
+
+  @media (min-width: 1024px) {
+    font-size: 1.33333333rem;
+    margin: 0;
+    padding-right: 20px;
+  }
   color: #d5dee2;
 `;
 
@@ -38,21 +63,36 @@ const Step = styled.section`
   display: flex;
   flex-direction: column;
   margin: 50px 0px;
-  padding: 10px;
+  padding: 20px;
 
   @media (min-width: 1024px) {
-    padding: 20px;
-    margin: 150px 0;
+    p {
+      font-size: 20px;
+    }
+    margin: 300px 0;
     flex-direction: row;
     justify-content: flex-end;
     flex-wrap: wrap;
   }
+
+  @media (min-width: 1200px) {
+    p {
+      font-size: 24px;
+    }
+  }
 `;
 const StepSectionTitle = styled.h3`
   font-size: 2em;
+  padding: 0 20px 40px 0;
   margin: 0;
   @media (min-width: 1024px) {
+    font-size: 2.25rem;
     width: 25%;
+    padding: 0 20px 0 0;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 2.5rem;
   }
 `;
 
@@ -68,7 +108,7 @@ const StepSectionInfo = styled.aside`
 `;
 
 const StepSectionAsset = styled.aside`
-  padding: 50px 10px;
+  padding: 50px 0px;
   width: 100%;
 
   img {
@@ -85,7 +125,7 @@ const StepSectionAsset = styled.aside`
   }
 
   @media (min-width: 1024px) {
-    padding: 150px 0px 0px;
+    padding: 300px 0px 0px;
   }
 `;
 
