@@ -116,7 +116,8 @@ const StepSectionAsset = styled.aside`
     width: 100%;
   }
 
-  .video-react-control-bar {
+  .video-react-control-bar,
+  .video-react-big-play-button {
     display: none;
   }
 

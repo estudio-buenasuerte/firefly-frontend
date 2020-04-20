@@ -35,7 +35,8 @@ const HeroSection = styled.section`
     }
   }
 
-  .video-react-control-bar {
+  .video-react-control-bar,
+  .video-react-big-play-button {
     display: none;
   }
 
