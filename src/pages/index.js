@@ -6,7 +6,12 @@ import styled from "styled-components";
 import Transition from "../images/Transition_800.mp4";
 import ArrowWhite from "../images/arrow-white.svg";
 import BlockContent from "@sanity/block-content-to-react";
-import { Player } from "video-react";
+import {
+  Player,
+  ControlBar,
+  CurrentTimeDisplay,
+  VolumeMenuButton,
+} from "video-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -24,9 +29,19 @@ const HeroSection = styled.section`
     width: 100%;
   }
 
+  video {
+    &:focus {
+      outline: 1px solid transparent;
+    }
+  }
+
+  .video-react-control-bar {
+    display: none;
+  }
+
   @media (min-width: 1024px) {
-    height: 100vh;
     img {
+      height: 100vh;
       opacity: 0;
     }
   }
@@ -247,8 +262,6 @@ const Index = () => {
     slidesToScroll: 1,
   };
 
-  // debugger;
-
   return (
     <Layout slimFooter={false}>
       <SEO title="Home" />
@@ -266,7 +279,18 @@ const Index = () => {
           ] === "png" ? (
             <img src={homeData.heroAsset.asset.url} alt="Firefly Drone Shows" />
           ) : (
-            ""
+            <Player
+              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              src={homeData.heroAsset.asset.url}
+            >
+              <ControlBar autoHide={true}>
+                <CurrentTimeDisplay order={4.1} />
+                <VolumeMenuButton disabled />
+              </ControlBar>
+            </Player>
           )}
         </HeroSection>
 
@@ -280,6 +304,7 @@ const Index = () => {
               autoPlay={true}
               loop={true}
               playsInline={true}
+              muted={true}
               src={Transition}
               alt="transition"
             />
