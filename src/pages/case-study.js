@@ -108,7 +108,7 @@ const StepSectionInfo = styled.aside`
 `;
 
 const StepSectionAsset = styled.aside`
-  padding: 50px 0px;
+  padding: 25px 0 50px;
   width: 100%;
 
   img {
@@ -125,7 +125,7 @@ const StepSectionAsset = styled.aside`
   }
 
   @media (min-width: 1024px) {
-    padding: 300px 0px 0px;
+    padding: 80px 0px 0px;
   }
 `;
 
