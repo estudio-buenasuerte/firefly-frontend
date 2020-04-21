@@ -2,19 +2,24 @@ const MailerService = {
   sendMail(data) {
     const { name, email, subject, message } = data;
 
-    return fetch("../../../functions/email.js", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        subject,
-        message,
-      }),
-    })
+    return fetch(
+      "https://firefly-drone-shows.netlify.app/.netlify/functions/email",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+        }),
+      }
+    )
       .then((res) => {
+        debugger;
         if (res.ok) {
           return res.json();
         } else {
