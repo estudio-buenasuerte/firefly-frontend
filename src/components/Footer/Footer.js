@@ -6,6 +6,7 @@ import styled from "styled-components";
 import DroneBlack from "../../images/drone-black.svg";
 import ArrowWhite from "../../images/arrow-white.svg";
 import ArrowBlack from "../../images/arrow-black.svg";
+import MailerService from "../../util/mailer";
 
 const FooterWrapper = styled.footer`
   box-sizing: border-box;
@@ -324,9 +325,20 @@ const Footer = ({ slimFooter }) => {
   const submitForm = (e) => {
     e.preventDefault();
     const { name, email, subject, message } = e.target;
-    alert(
-      `Hi, ${name.value}. We'll send an email from ${email.value} when we're ready.`
-    );
+
+    MailerService.sendMail({
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value,
+    })
+      .then((res) => {
+        debugger;
+      })
+      .catch((err) => {
+        debugger;
+        console.error(err);
+      });
   };
 
   return (
