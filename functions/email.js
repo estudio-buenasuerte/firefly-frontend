@@ -2,7 +2,7 @@
 const express = require("express");
 const serverless = require("serverless-http");
 const app = express();
-const bodyParser = require("body-parser");
+const bodyParser = express.json();
 const nodemailer = require("nodemailer");
 
 const router = express.Router();
