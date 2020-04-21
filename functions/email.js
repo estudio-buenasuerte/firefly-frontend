@@ -10,7 +10,10 @@ const router = express.Router();
 router.route("/").post(bodyParser, (req, res) => {
   const { name, email, subject, message } = req.body;
 
-  console.log(req.body);
+  console.log(`name:`, name);
+  console.log(`email:`, email);
+  console.log(`subject:`, subject);
+  console.log(`message:`, message);
 
   res.status(200).json({
     name,
