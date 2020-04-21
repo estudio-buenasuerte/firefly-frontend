@@ -21,7 +21,8 @@ const MailerService = {
       .then((res) => {
         debugger;
         if (res.ok) {
-          return res.json();
+          // return res.json();
+          debugger;
         } else {
           return res.json().then((e) => Promise.reject(e));
         }
