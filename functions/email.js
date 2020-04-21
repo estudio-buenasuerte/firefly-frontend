@@ -7,7 +7,7 @@ const nodemailer = require("nodemailer");
 
 const router = express.Router();
 
-router.post("/", (req, res) => {
+router.route("/").post(bodyParser, (req, res) => {
   const { name, email, subject, message } = req.body;
 
   console.log(req.body);
