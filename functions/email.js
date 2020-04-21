@@ -7,7 +7,7 @@ const nodemailer = require("nodemailer");
 
 const router = express.Router();
 
-router.route("/").post((req, res) => {
+router.post("/", (req, res) => {
   const { name, email, subject, message } = req.body;
 
   console.log(req.body);
@@ -22,7 +22,7 @@ router.route("/").post((req, res) => {
 
 function sendEmail(data) {}
 
-app.use(bodyParser.json());
+app.use(bodyParser);
 app.use("/.netlify/functions/email", router); // path must route to lambda
 
 module.exports = app;
