@@ -111,7 +111,7 @@ const LottieSection = styled.section`
       margin-bottom: 40px;
     }
     p {
-      font-size: 1.33333rem;
+      font-size: 1rem;
     }
   }
 
@@ -144,6 +144,9 @@ const LottieSection = styled.section`
         margin-bottom: 60px;
         font-size: 2rem;
       }
+      p {
+        font-size: 1.33333rem;
+      }
     }
   }
 `;
@@ -173,8 +176,9 @@ const TextSection = styled.section`
       font-size: 1.5rem;
       margin-bottom: 40px;
     }
-    p {
-      font-size: 1.33333rem;
+    p,
+    strong {
+      font-size: 1rem;
     }
   }
 
@@ -186,6 +190,11 @@ const TextSection = styled.section`
     .title-wrapper,
     .section-info {
       width: calc(50% - 10px);
+
+      p,
+      strong {
+        font-size: 1.33333rem;
+      }
     }
 
     .title-wrapper {
