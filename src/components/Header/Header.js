@@ -71,11 +71,13 @@ const MobileNav = styled.nav`
     width: 100vw;
     overflow: hidden;
     padding-top: 100px;
+
     a {
+      text-align: right;
       font-size: 2em;
       display: block;
       margin-bottom: 20px;
-      padding-left: 20px;
+      padding: 0 20px;
       text-decoration: none;
     }
   }

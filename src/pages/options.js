@@ -24,12 +24,16 @@ const OptionsSection = styled.section`
 
 const OptionVidSection = styled.aside`
   width: 100%;
+  position: relative;
 
   box-sizing: border-box;
 
   img {
     max-width: 100%;
     width: 100%;
+  }
+  h3 {
+    padding-right: 20px;
   }
 
   .video-react {
@@ -42,6 +46,8 @@ const OptionVidSection = styled.aside`
   }
 
   video {
+    background-color: #1b1f21;
+
     &:focus {
       outline: 1px solid transparent;
     }
@@ -49,7 +55,21 @@ const OptionVidSection = styled.aside`
 
   @media (min-width: 1024px) {
     width: calc(33.33% - 13.3333px);
+
+    .video-react {
+      max-width: 500px;
+      margin: 0 auto;
+    }
   }
+`;
+
+const VideoMask = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 `;
 
 const BigTitle = styled.h2`
@@ -60,6 +80,10 @@ const BigTitle = styled.h2`
     margin: 0 0 20px 0;
     font-size: 48px;
   }
+
+  @media (min-width: 1400px) {
+    font-size: 66px;
+  }
 `;
 
 const MediumTitle = styled.h3`
@@ -69,6 +93,10 @@ const MediumTitle = styled.h3`
   @media (min-width: 1024px) {
     margin: 0 0 40px 0;
     font-size: 36px;
+  }
+
+  @media (min-width: 1400px) {
+    font-size: 48px;
   }
 `;
 
@@ -86,19 +114,21 @@ const MediumLink = styled.span`
 `;
 
 const StockVSCustom = styled.section`
-  padding: 10px;
-  margin: 50px 0;
+  padding: 0 20px;
+  margin: 25px 0 50px;
   display: flex;
   flex-direction: column;
 
   @media (min-width: 1024px) {
     padding: 20px;
-    margin: 300px 0;
+    margin: 150px 0;
     flex-direction: row;
   }
 `;
 
 const StockVSCustomDiv = styled.aside`
+  margin-bottom: 50px;
+
   @media (min-width: 1024px) {
     p {
       max-width: 65ch;
@@ -118,6 +148,8 @@ const ImageOnLeft = styled.section`
   padding: 10px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
+
   p {
     max-width: 70ch;
   }
@@ -125,25 +157,30 @@ const ImageOnLeft = styled.section`
   img {
     max-width: 100%;
     width: 100%;
+    margin-bottom: 20px;
+    @media (min-width: 1024px) {
+      margin: 0;
+    }
   }
 
   @media (min-width: 1024px) {
     padding: 20px;
-    margin: 300px 0;
+    margin: 150px 0;
     flex-direction: row;
 
     p {
       font-size: 20px;
-      max-width: 65ch;
+      max-width: 50ch;
     }
 
     aside {
-      width: 50%;
-      &:first-of-type {
+      &.img {
         padding-right: 10px;
+        width: 60%;
       }
-      &:nth-of-type(2) {
-        padding-left: 10px;
+      &.desc {
+        width: 40%;
+        padding: 0 10px;
       }
     }
   }
@@ -153,6 +190,8 @@ const ImageOnRight = styled.section`
   padding: 10px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
+
   p {
     max-width: 70ch;
   }
@@ -160,36 +199,43 @@ const ImageOnRight = styled.section`
   img {
     max-width: 100%;
     width: 100%;
+    margin-bottom: 20px;
+    @media (min-width: 1024px) {
+      margin: 0;
+    }
   }
 
   aside {
-    &:first-of-type {
+    &.desc {
       order: 2;
+      box-sizing: border-box;
     }
-    &:nth-of-type(2) {
+    &.img {
       order: 1;
     }
   }
 
   @media (min-width: 1024px) {
     padding: 20px;
-    margin: 300px 0;
+    margin: 150px 0;
     flex-direction: row;
 
     p {
       font-size: 20px;
-      max-width: 65ch;
+      max-width: 50ch;
     }
 
     aside {
-      width: 50%;
-      &:first-of-type {
-        padding-right: 10px;
+      &.desc {
+        padding-right: 20px;
+
         order: 1;
+        width: 40%;
       }
-      &:nth-of-type(2) {
+      &.img {
         padding-left: 10px;
         order: 2;
+        width: 60%;
       }
     }
   }
@@ -232,6 +278,8 @@ const Options = () => {
           threeHundredDronesList {
             list
           }
+          stockTitle
+          customTitle
         }
       }
     }
@@ -244,6 +292,7 @@ const Options = () => {
 
       <OptionsSection>
         <OptionVidSection>
+          <VideoMask />
           <Player
             playsInline={true}
             autoPlay={true}
@@ -256,6 +305,7 @@ const Options = () => {
           <h3>{optionsData.oneHundredTitle}</h3>
         </OptionVidSection>
         <OptionVidSection>
+          <VideoMask />
           <Player
             playsInline={true}
             autoPlay={true}
@@ -267,6 +317,7 @@ const Options = () => {
           <h3>{optionsData.twoHundredTitle}</h3>
         </OptionVidSection>
         <OptionVidSection>
+          <VideoMask />
           <Player
             playsInline={true}
             autoPlay={true}
@@ -283,7 +334,9 @@ const Options = () => {
         <StockVSCustomDiv classname="stock">
           {optionsData._rawStockDescription && (
             <React.Fragment>
-              <MediumTitle>Stock</MediumTitle>
+              <MediumTitle>
+                {optionsData.stockTitle ? optionsData.stockTitle : "Stock"}
+              </MediumTitle>
               <BlockContent blocks={optionsData._rawStockDescription} />
             </React.Fragment>
           )}
@@ -291,7 +344,9 @@ const Options = () => {
         <StockVSCustomDiv className="custom">
           {optionsData._rawCustomDescription && (
             <React.Fragment>
-              <MediumTitle>Custom</MediumTitle>
+              <MediumTitle>
+                {optionsData.customTitle ? optionsData.customTitle : "Custom"}
+              </MediumTitle>
               <BlockContent blocks={optionsData._rawCustomDescription} />
               <MediumLink>
                 <Link to={"/case-study"}>View Custom Case Study</Link>
@@ -303,7 +358,7 @@ const Options = () => {
 
       <ImageOnLeft>
         {optionsData.oneHundredDroneImage && (
-          <aside>
+          <aside className="img">
             <img
               src={optionsData.oneHundredDroneImage.asset.url}
               alt="100 Drones"
@@ -311,7 +366,7 @@ const Options = () => {
           </aside>
         )}
         {optionsData._rawOneHundredDronesDescription && (
-          <aside>
+          <aside className="desc">
             <BigTitle>100 Drones</BigTitle>
             <BlockContent
               blocks={optionsData._rawOneHundredDronesDescription}
@@ -322,7 +377,7 @@ const Options = () => {
 
       <ImageOnRight>
         {optionsData._rawTwoHundredDronesDescription && (
-          <aside>
+          <aside className="desc">
             <BigTitle>200 Drones</BigTitle>
             <BlockContent
               blocks={optionsData._rawTwoHundredDronesDescription}
@@ -330,7 +385,7 @@ const Options = () => {
           </aside>
         )}
         {optionsData.twoHundredDroneImage && (
-          <aside>
+          <aside className="img">
             <img
               src={optionsData.twoHundredDroneImage.asset.url}
               alt="200 Drones"
@@ -341,7 +396,7 @@ const Options = () => {
 
       <ImageOnLeft>
         {optionsData.threeHundredDroneImage && (
-          <aside>
+          <aside className="img">
             <img
               src={optionsData.threeHundredDroneImage.asset.url}
               alt="300 Drones"
@@ -349,7 +404,7 @@ const Options = () => {
           </aside>
         )}
         {optionsData._rawThreeHundredDronesDescription && (
-          <aside>
+          <aside className="desc">
             <BigTitle>300 Drones</BigTitle>
             <BlockContent
               blocks={optionsData._rawThreeHundredDronesDescription}

@@ -55,6 +55,9 @@ const AboutSection = styled.section`
   flex-direction: column;
   color: #191d1e;
 
+  &:first-of-type {
+    padding-bottom: 50px;
+  }
   h2,
   p {
     margin: 0 0 1rem;
@@ -66,6 +69,9 @@ const AboutSection = styled.section`
 
   @media (min-width: 1024px) {
     padding: 0 20px 100px;
+    &:first-of-type {
+      padding-bottom: 100px;
+    }
     flex-direction: row;
     align-items: flex-start;
 

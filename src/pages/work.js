@@ -47,7 +47,7 @@ const Work = () => {
         <WorkList>
           {workList.map((item) => (
             <WorkAsset
-              key={item.title}
+              key={item.asset.asset.url}
               asset={{
                 type: item.asset.asset.mimeType,
                 url: item.asset.asset.url,

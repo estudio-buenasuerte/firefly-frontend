@@ -66,13 +66,32 @@ const Step = styled.section`
   padding: 20px;
 
   @media (min-width: 1024px) {
-    p {
-      font-size: 20px;
-    }
-    margin: 300px 0;
+    margin: 150px 0;
     flex-direction: row;
     justify-content: flex-end;
     flex-wrap: wrap;
+    &:nth-of-type(odd) {
+      .step-asset {
+        order: 2;
+      }
+      .step-desc {
+        order: 1;
+        padding-right: 20px;
+      }
+    }
+    &:nth-of-type(even) {
+      .step-asset {
+        order: 1;
+      }
+      .step-desc {
+        order: 2;
+        padding-left: 20px;
+      }
+    }
+
+    p {
+      font-size: 20px;
+    }
   }
 
   @media (min-width: 1200px) {
@@ -81,35 +100,40 @@ const Step = styled.section`
     }
   }
 `;
+
 const StepSectionTitle = styled.h3`
   font-size: 2em;
-  padding: 0 20px 40px 0;
+  padding: 0 0 20px;
   margin: 0;
+
   @media (min-width: 1024px) {
-    font-size: 2.25rem;
-    width: 25%;
-    padding: 0 20px 0 0;
+    font-size: 36px;
+    padding: 0 0 40px;
   }
 
   @media (min-width: 1200px) {
-    font-size: 2.5rem;
+    font-size: 66px;
   }
 `;
 
 const StepSectionInfo = styled.aside`
+  box-sizing: border-box;
+
   p {
     margin: 0 0 1em;
-    max-width: 75ch;
+    max-width: 45ch;
     line-height: 1.25;
   }
+
   @media (min-width: 1024px) {
-    width: 50%;
+    width: 40%;
   }
 `;
 
 const StepSectionAsset = styled.aside`
   padding: 25px 0 50px;
   width: 100%;
+  position: relative;
 
   img {
     max-width: 100%;
@@ -126,8 +150,18 @@ const StepSectionAsset = styled.aside`
   }
 
   @media (min-width: 1024px) {
-    padding: 80px 0px 0px;
+    width: 60%;
+    padding: 0;
   }
+`;
+
+const VideoMask = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 `;
 
 const CaseStudy = () => {
@@ -222,11 +256,11 @@ const CaseStudy = () => {
       </HeroSection>
 
       <Step data-id={caseStudy.step1Title}>
-        <StepSectionTitle>{caseStudy.step1Title}</StepSectionTitle>
-        <StepSectionInfo>
+        <StepSectionInfo className="step-desc">
+          <StepSectionTitle>{caseStudy.step1Title}</StepSectionTitle>
           <BlockContent blocks={caseStudy._rawStep1Description} />
         </StepSectionInfo>
-        <StepSectionAsset>
+        <StepSectionAsset className="step-asset">
           {caseStudy.step1Asset.asset.url.split(".")[
             caseStudy.step1Asset.asset.url.split(".").length - 1
           ] === "gif" ||
@@ -241,27 +275,31 @@ const CaseStudy = () => {
               alt={caseStudy.step1Title}
             />
           ) : (
-            <Player
-              playsInline
-              autoPlay={true}
-              loop={true}
-              muted={true}
-              src={caseStudy.step1Asset.asset.url}
-            >
-              <ControlBar autoHide={true}>
-                <CurrentTimeDisplay order={4.1} />
-                <VolumeMenuButton disabled />
-              </ControlBar>
-            </Player>
+            <>
+              <VideoMask />
+              <Player
+                playsInline
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                src={caseStudy.step1Asset.asset.url}
+              >
+                <ControlBar autoHide={true}>
+                  <CurrentTimeDisplay order={4.1} />
+                  <VolumeMenuButton disabled />
+                </ControlBar>
+              </Player>
+            </>
           )}
         </StepSectionAsset>
       </Step>
+
       <Step data-id={caseStudy.step2Title}>
-        <StepSectionTitle>{caseStudy.step2Title}</StepSectionTitle>
-        <StepSectionInfo>
+        <StepSectionInfo className="step-desc">
+          <StepSectionTitle>{caseStudy.step2Title}</StepSectionTitle>
           <BlockContent blocks={caseStudy._rawStep2Description} />
         </StepSectionInfo>
-        <StepSectionAsset>
+        <StepSectionAsset className="step-asset">
           {caseStudy.step2Asset.asset.url.split(".")[
             caseStudy.step2Asset.asset.url.split(".").length - 1
           ] === "gif" ||
@@ -276,27 +314,31 @@ const CaseStudy = () => {
               alt={caseStudy.step2Title}
             />
           ) : (
-            <Player
-              playsInline
-              autoPlay={true}
-              loop={true}
-              muted={true}
-              src={caseStudy.step2Asset.asset.url}
-            >
-              <ControlBar autoHide={true}>
-                <CurrentTimeDisplay order={4.1} />
-                <VolumeMenuButton disabled />
-              </ControlBar>
-            </Player>
+            <>
+              <VideoMask />
+              <Player
+                playsInline
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                src={caseStudy.step2Asset.asset.url}
+              >
+                <ControlBar autoHide={true}>
+                  <CurrentTimeDisplay order={4.1} />
+                  <VolumeMenuButton disabled />
+                </ControlBar>
+              </Player>
+            </>
           )}
         </StepSectionAsset>
       </Step>
+
       <Step data-id={caseStudy.step3Title}>
-        <StepSectionTitle>{caseStudy.step3Title}</StepSectionTitle>
-        <StepSectionInfo>
+        <StepSectionInfo className="step-desc">
+          <StepSectionTitle>{caseStudy.step3Title}</StepSectionTitle>
           <BlockContent blocks={caseStudy._rawStep3Description} />
         </StepSectionInfo>
-        <StepSectionAsset>
+        <StepSectionAsset className="step-asset">
           {caseStudy.step3Asset.asset.url.split(".")[
             caseStudy.step3Asset.asset.url.split(".").length - 1
           ] === "gif" ||
@@ -311,27 +353,31 @@ const CaseStudy = () => {
               alt={caseStudy.step3Title}
             />
           ) : (
-            <Player
-              playsInline
-              autoPlay={true}
-              loop={true}
-              muted={true}
-              src={caseStudy.step3Asset.asset.url}
-            >
-              <ControlBar autoHide={true}>
-                <CurrentTimeDisplay order={4.1} />
-                <VolumeMenuButton disabled />
-              </ControlBar>
-            </Player>
+            <>
+              <VideoMask />
+              <Player
+                playsInline
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                src={caseStudy.step3Asset.asset.url}
+              >
+                <ControlBar autoHide={true}>
+                  <CurrentTimeDisplay order={4.1} />
+                  <VolumeMenuButton disabled />
+                </ControlBar>
+              </Player>
+            </>
           )}
         </StepSectionAsset>
       </Step>
+
       <Step data-id={caseStudy.step4Title}>
-        <StepSectionTitle>{caseStudy.step4Title}</StepSectionTitle>
-        <StepSectionInfo>
+        <StepSectionInfo className="step-desc">
+          <StepSectionTitle>{caseStudy.step4Title}</StepSectionTitle>
           <BlockContent blocks={caseStudy._rawStep4Description} />
         </StepSectionInfo>
-        <StepSectionAsset>
+        <StepSectionAsset className="step-asset">
           {caseStudy.step4Asset.asset.url.split(".")[
             caseStudy.step4Asset.asset.url.split(".").length - 1
           ] === "gif" ||
@@ -346,27 +392,30 @@ const CaseStudy = () => {
               alt={caseStudy.step4Title}
             />
           ) : (
-            <Player
-              playsInline
-              autoPlay={true}
-              loop={true}
-              muted={true}
-              src={caseStudy.step4Asset.asset.url}
-            >
-              <ControlBar autoHide={true}>
-                <CurrentTimeDisplay order={4.1} />
-                <VolumeMenuButton disabled />
-              </ControlBar>
-            </Player>
+            <>
+              <VideoMask />
+              <Player
+                playsInline
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                src={caseStudy.step4Asset.asset.url}
+              >
+                <ControlBar autoHide={true}>
+                  <CurrentTimeDisplay order={4.1} />
+                  <VolumeMenuButton disabled />
+                </ControlBar>
+              </Player>
+            </>
           )}
         </StepSectionAsset>
       </Step>
       <Step data-id={caseStudy.step5Title}>
-        <StepSectionTitle>{caseStudy.step5Title}</StepSectionTitle>
-        <StepSectionInfo>
+        <StepSectionInfo className="step-desc">
+          <StepSectionTitle>{caseStudy.step5Title}</StepSectionTitle>
           <BlockContent blocks={caseStudy._rawStep5Description} />
         </StepSectionInfo>
-        <StepSectionAsset>
+        <StepSectionAsset className="step-asset">
           {caseStudy.step5Asset.asset.url.split(".")[
             caseStudy.step5Asset.asset.url.split(".").length - 1
           ] === "gif" ||
@@ -381,27 +430,31 @@ const CaseStudy = () => {
               alt={caseStudy.step5Title}
             />
           ) : (
-            <Player
-              playsInline
-              autoPlay={true}
-              loop={true}
-              muted={true}
-              src={caseStudy.step5Asset.asset.url}
-            >
-              <ControlBar autoHide={true}>
-                <CurrentTimeDisplay order={4.1} />
-                <VolumeMenuButton disabled />
-              </ControlBar>
-            </Player>
+            <>
+              <VideoMask />
+              <Player
+                playsInline
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                src={caseStudy.step5Asset.asset.url}
+              >
+                <ControlBar autoHide={true}>
+                  <CurrentTimeDisplay order={4.1} />
+                  <VolumeMenuButton disabled />
+                </ControlBar>
+              </Player>
+            </>
           )}
         </StepSectionAsset>
       </Step>
+
       <Step data-id={caseStudy.step6Title}>
-        <StepSectionTitle>{caseStudy.step6Title}</StepSectionTitle>
-        <StepSectionInfo>
+        <StepSectionInfo className="step-desc">
+          <StepSectionTitle>{caseStudy.step6Title}</StepSectionTitle>
           <BlockContent blocks={caseStudy._rawStep6Description} />
         </StepSectionInfo>
-        <StepSectionAsset>
+        <StepSectionAsset className="step-asset">
           {caseStudy.step6Asset.asset.url.split(".")[
             caseStudy.step6Asset.asset.url.split(".").length - 1
           ] === "gif" ||
@@ -416,18 +469,21 @@ const CaseStudy = () => {
               alt={caseStudy.step6Title}
             />
           ) : (
-            <Player
-              playsInline
-              autoPlay={true}
-              loop={true}
-              muted={true}
-              src={caseStudy.step6Asset.asset.url}
-            >
-              <ControlBar autoHide={true}>
-                <CurrentTimeDisplay order={4.1} />
-                <VolumeMenuButton disabled />
-              </ControlBar>
-            </Player>
+            <>
+              <VideoMask />
+              <Player
+                playsInline
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                src={caseStudy.step6Asset.asset.url}
+              >
+                <ControlBar autoHide={true}>
+                  <CurrentTimeDisplay order={4.1} />
+                  <VolumeMenuButton disabled />
+                </ControlBar>
+              </Player>
+            </>
           )}
         </StepSectionAsset>
       </Step>
