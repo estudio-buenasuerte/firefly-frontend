@@ -248,9 +248,7 @@ const About = () => {
         )}
       </HeroSection>
 
-      <HeroText>
-        {aboutData.aboutHeading && <h1>{aboutData.HeroText}</h1>}
-      </HeroText>
+      <HeroText>{aboutData.heroText && <h1>{aboutData.heroText}</h1>}</HeroText>
       <AboutWrapper>
         <AboutSection>
           <aside className="title">
