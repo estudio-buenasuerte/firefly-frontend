@@ -321,6 +321,10 @@ const Footer = ({ slimFooter }) => {
     }
   `);
   const [footerData] = useState(data.allSanityFooter.nodes[0]);
+  const [feedback, setFeedback] = useState({
+    success: null,
+    message: null,
+  });
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -333,10 +337,18 @@ const Footer = ({ slimFooter }) => {
       message: message.value,
     })
       .then((res) => {
-        debugger;
+        name.value = "";
+        email.value = "";
+        subject.value = "";
+        message.value = "";
+
+        setFeedback({ success: true, message: "Thanks for reaching out!" });
       })
       .catch((err) => {
-        debugger;
+        setFeedback({
+          success: false,
+          message: "Uh oh. Something went wrong.",
+        });
         console.error(err);
       });
   };
@@ -448,9 +460,15 @@ const Footer = ({ slimFooter }) => {
                 className="message"
                 placeholder="Message"
                 resize="false"
+                data-gramm_editor="false"
               />
               <button type="submit">Send Message</button>
             </Form>
+            {feedback.message && (
+              <p className={feedback.success ? "success" : "error"}>
+                {feedback.message}
+              </p>
+            )}
           </Section>
         </React.Fragment>
       )}

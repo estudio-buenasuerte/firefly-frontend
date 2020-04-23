@@ -1,5 +1,5 @@
 const MailerService = {
-  sendMail(data) {
+  async sendMail(data) {
     const { name, email, subject, message } = data;
 
     return fetch(
@@ -7,9 +7,8 @@ const MailerService = {
       {
         method: "POST",
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
-        mode: "no-cors",
         body: JSON.stringify({
           name,
           email,
@@ -19,12 +18,13 @@ const MailerService = {
       }
     )
       .then((res) => {
-        debugger;
         if (res.ok) {
-          // return res.json();
-          debugger;
+          return res.json();
         } else {
-          return res.json().then((e) => Promise.reject(e));
+          debugger;
+          return res.json().then((e) => {
+            Promise.reject(e);
+          });
         }
       })
       .catch((error) => console.error(error));
