@@ -234,12 +234,12 @@ const About = () => {
       </HeroSection>
 
       <HeroText>
-        {aboutData.aboutHeading && <h1>{aboutData.aboutHeading}</h1>}
+        {aboutData.aboutHeading && <h1>{aboutData.HeroText}</h1>}
       </HeroText>
 
       <AboutSection>
         <aside className="title">
-          <h2>{aboutData.heroText}</h2>
+          <h2>{aboutData.aboutHeading}</h2>
         </aside>
         <aside className="about-details">
           <BlockContent blocks={aboutData._rawAboutDescription} />

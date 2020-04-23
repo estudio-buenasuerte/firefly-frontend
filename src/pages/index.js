@@ -16,7 +16,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const HomeWrapper = styled.main``;
+const HomeWrapper = styled.main`
+  video {
+    background-color: #1b1f21;
+  }
+`;
 
 const HeroSection = styled.section`
   width: 100%;
@@ -58,7 +62,7 @@ const HeroText = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 300px 20px;
+    padding: 150px 20px 100px;
 
     h1 {
       font-size: 3.5555555rem;
@@ -70,6 +74,15 @@ const HeroText = styled.section`
       font-size: 5rem;
     }
   }
+`;
+
+const VideoMask = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 `;
 
 const LottieSection = styled.section`
@@ -85,7 +98,11 @@ const LottieSection = styled.section`
 
   .animation,
   .section-info {
+    position: relative;
     width: 100%;
+
+    .video-react {
+    }
   }
 
   .section-info {
@@ -116,6 +133,10 @@ const LottieSection = styled.section`
     .animation,
     .section-info {
       width: calc(50% - 10px);
+      .video-react {
+        max-width: 600px;
+        margin: 0 auto;
+      }
     }
 
     .section-info {
@@ -158,7 +179,7 @@ const TextSection = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 300px 20px;
+    padding: 150px 20px;
     flex-direction: row;
     justify-content: space-between;
 
@@ -301,6 +322,7 @@ const Index = () => {
 
         <LottieSection>
           <aside className="animation">
+            <VideoMask />
             <Player
               autoPlay={true}
               loop={true}
