@@ -41,10 +41,16 @@ const HeroText = styled.section`
     }
   }
 `;
-
-const AboutSection = styled.section`
+const AboutWrapper = styled.section`
   padding: 100px 20px;
   background-color: #d5dee2;
+
+  @media (min-width: 1024px) {
+    padding: 300px 20px 200px;
+  }
+`;
+
+const AboutSection = styled.section`
   display: flex;
   flex-direction: column;
   color: #191d1e;
@@ -53,8 +59,13 @@ const AboutSection = styled.section`
   p {
     margin: 0 0 1rem;
   }
+
+  ul {
+    margin: 0;
+  }
+
   @media (min-width: 1024px) {
-    padding: 300px 20px;
+    padding: 0 20px 100px;
     flex-direction: row;
     align-items: flex-start;
 
@@ -63,6 +74,7 @@ const AboutSection = styled.section`
       margin-left: auto;
       font-size: 2rem;
     }
+
     .about-details {
       width: calc(50% - 20px);
       padding-left: 20px;
@@ -83,7 +95,7 @@ const ConnectSection = styled.section`
     h3 {
       width: calc(25% - 20px);
       margin-left: auto;
-      font-size: 2rem;
+      font-size: 3rem;
     }
 
     form {
@@ -201,6 +213,9 @@ const About = () => {
               url
             }
           }
+          goodForList {
+            list
+          }
         }
       }
     }
@@ -236,16 +251,29 @@ const About = () => {
       <HeroText>
         {aboutData.aboutHeading && <h1>{aboutData.HeroText}</h1>}
       </HeroText>
-
-      <AboutSection>
-        <aside className="title">
-          <h2>{aboutData.aboutHeading}</h2>
-        </aside>
-        <aside className="about-details">
-          <BlockContent blocks={aboutData._rawAboutDescription} />
-          {aboutData.contact && <List></List>}
-        </aside>
-      </AboutSection>
+      <AboutWrapper>
+        <AboutSection>
+          <aside className="title">
+            <h2>{aboutData.aboutHeading}</h2>
+          </aside>
+          <aside className="about-details">
+            <BlockContent blocks={aboutData._rawAboutDescription} />
+            {aboutData.contact && <List></List>}
+          </aside>
+        </AboutSection>
+        <AboutSection>
+          <aside className="title">
+            <h2>Our shows are perfect for:</h2>
+          </aside>
+          <aside className="about-details">
+            <List className="good">
+              {aboutData.goodForList.list.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </List>
+          </aside>
+        </AboutSection>
+      </AboutWrapper>
 
       <ConnectSection>
         <Title>Let's Work Together</Title>

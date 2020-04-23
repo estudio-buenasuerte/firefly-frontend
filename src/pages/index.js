@@ -27,6 +27,7 @@ const HeroSection = styled.section`
 
   background-position: center;
   background-size: cover;
+  position: relative;
 
   img {
     max-width: 100%;
@@ -310,18 +311,21 @@ const Index = () => {
           ] === "png" ? (
             <img src={homeData.heroAsset.asset.url} alt="Firefly Drone Shows" />
           ) : (
-            <Player
-              playsInline
-              autoPlay={true}
-              loop={true}
-              muted={true}
-              src={homeData.heroAsset.asset.url}
-            >
-              <ControlBar autoHide={true}>
-                <CurrentTimeDisplay order={4.1} />
-                <VolumeMenuButton disabled />
-              </ControlBar>
-            </Player>
+            <>
+              <VideoMask />
+              <Player
+                playsInline
+                autoPlay={true}
+                loop={true}
+                muted={true}
+                src={homeData.heroAsset.asset.url}
+              >
+                <ControlBar autoHide={true}>
+                  <CurrentTimeDisplay order={4.1} />
+                  <VolumeMenuButton disabled />
+                </ControlBar>
+              </Player>
+            </>
           )}
         </HeroSection>
 

@@ -8,8 +8,14 @@ const app = express();
 
 const router = express.Router();
 
-app.use(bodyParser);
+const allowedOrigins = [
+  "http://localhost:8000",
+  "https://www.fireflydroneshows.com",
+  "https://firefly-drone-shows.netlify.app/",
+];
+
 app.use(cors());
+app.use(bodyParser);
 app.use("/.netlify/functions/email", router);
 
 router.route("/").post(bodyParser, (req, res) => {

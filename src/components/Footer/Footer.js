@@ -300,9 +300,6 @@ const Footer = ({ slimFooter }) => {
         nodes {
           title
           _rawDescription
-          goodForList {
-            list
-          }
           connectList {
             list {
               title
@@ -384,14 +381,6 @@ const Footer = ({ slimFooter }) => {
               )}
               {footerData._rawDescription && (
                 <BlockContent blocks={footerData._rawDescription} />
-              )}
-              {footerData.goodForList && (
-                <List className="good">
-                  <Title>Our shows are perfect for</Title>
-                  {footerData.goodForList.list.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </List>
               )}
             </section>
             <img src={DroneBlack} alt="Firefly Drone" className="footer-icon" />
