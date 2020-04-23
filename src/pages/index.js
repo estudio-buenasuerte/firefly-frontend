@@ -345,7 +345,7 @@ const Index = () => {
           </aside>
           <aside className="section-info">
             {homeData._rawSection2Description && (
-              <BlockContent blocks={homeData._rawSection1Description} />
+              <BlockContent blocks={homeData._rawSection2Description} />
             )}
             {homeData.section2List.list && (
               <List className="section-1">
