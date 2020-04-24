@@ -33,7 +33,7 @@ router.route("/").post(bodyParser, (req, res) => {
   };
 
   transporter
-    .sendEmail(mailOptions)
+    .sendMail(mailOptions)
     .then((response) => {
       console.log("Email sent from node!", response);
     })
