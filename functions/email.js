@@ -10,14 +10,6 @@ const app = express();
 
 const router = express.Router();
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.REACT_APP_EMAIL_ACCOUNT,
-    pass: process.env.REACT_APP_EMAIL_PASSWORD,
-  },
-});
-
 app.use(cors());
 app.use(bodyParser);
 app.use("/.netlify/functions/email", router);
@@ -25,20 +17,31 @@ app.use("/.netlify/functions/email", router);
 router.route("/").post(bodyParser, (req, res) => {
   const { name, email, subject, message } = req.body;
 
-  const mailOptions = {
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.REACT_APP_EMAIL_ACCOUNT,
+      pass: process.env.REACT_APP_EMAIL_PASSWORD,
+    },
+  });
+
+  let mailOptions = {
     from: process.env.REACT_APP_EMAIL_ACCOUNT,
     to: "lucasvocos@gmail.com",
     subject: "New inquiry from Fireflydroneshows.com",
     text: "test",
   };
 
-  transporter.sendMail(mailOptions, (error, data) => {
+  transporter.sendMail(mailOptions, function(error, data) {
     if (error) {
-      console.log("error occurs", error);
+      console.log("error occurs!", error);
     } else {
-      console.log("data", data);
+      console.log("email sent!!", data);
     }
   });
+
+  const sendingEmail = process.env.REACT_APP_EMAIL_ACCOUNT;
+  const emailPass = process.env.REACT_APP_EMAIL_PASSWORD;
 
   console.log(`GMAIL`, process.env.REACT_APP_EMAIL_ACCOUNT);
   console.log(`GMAIL PASS`, process.env.REACT_APP_EMAIL_PASSWORD);
@@ -48,6 +51,8 @@ router.route("/").post(bodyParser, (req, res) => {
   console.log(`message:`, message);
 
   res.status(200).json({
+    sendingEmail,
+    emailPass,
     name,
     email,
     subject,
