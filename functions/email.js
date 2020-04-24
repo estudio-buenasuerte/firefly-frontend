@@ -32,13 +32,14 @@ router.route("/").post(bodyParser, (req, res) => {
     text: "test",
   };
 
-  transporter.sendMail(mailOptions, function(error, data) {
-    if (error) {
-      console.log("error occurs!", error);
-    } else {
-      console.log("email sent!!", data);
-    }
-  });
+  transporter
+    .sendEmail(mailOptions)
+    .then((response) => {
+      console.log("Email sent from node!", response);
+    })
+    .catch((error) => {
+      console.error("Error!", error);
+    });
 
   res.status(200).json({
     name,
