@@ -10,20 +10,20 @@ const app = express();
 
 const router = express.Router();
 
+let transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.REACT_APP_EMAIL_ACCOUNT,
+    pass: process.env.REACT_APP_EMAIL_PASSWORD,
+  },
+});
+
 app.use(cors());
 app.use(bodyParser);
 app.use("/.netlify/functions/email", router);
 
 router.route("/").post(bodyParser, (req, res) => {
   const { name, email, subject, message } = req.body;
-
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.REACT_APP_EMAIL_ACCOUNT,
-      pass: process.env.REACT_APP_EMAIL_PASSWORD,
-    },
-  });
 
   let mailOptions = {
     from: process.env.REACT_APP_EMAIL_ACCOUNT,
@@ -40,19 +40,7 @@ router.route("/").post(bodyParser, (req, res) => {
     }
   });
 
-  const sendingEmail = process.env.REACT_APP_EMAIL_ACCOUNT;
-  const emailPass = process.env.REACT_APP_EMAIL_PASSWORD;
-
-  console.log(`GMAIL`, process.env.REACT_APP_EMAIL_ACCOUNT);
-  console.log(`GMAIL PASS`, process.env.REACT_APP_EMAIL_PASSWORD);
-  console.log(`name:`, name);
-  console.log(`email:`, email);
-  console.log(`subject:`, subject);
-  console.log(`message:`, message);
-
   res.status(200).json({
-    sendingEmail,
-    emailPass,
     name,
     email,
     subject,
