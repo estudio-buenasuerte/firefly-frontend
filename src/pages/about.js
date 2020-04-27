@@ -5,6 +5,7 @@ import styled from "styled-components";
 import SEO from "../components/seo";
 import BlockContent from "@sanity/block-content-to-react";
 import ArrowBlack from "../images/arrow-black.svg";
+import MailerService from "../util/mailer";
 
 const HeroSection = styled.section`
   width: 100%;
@@ -230,13 +231,36 @@ const About = () => {
   `);
 
   const [aboutData] = useState(data.allSanityAbout.nodes[0]);
+  const [feedback, setFeedback] = useState({
+    success: null,
+    message: null,
+  });
 
   const submitForm = (e) => {
     e.preventDefault();
     const { name, email, subject, message } = e.target;
-    alert(
-      `Hi, ${name.value}. We'll send an email from ${email.value} when we're ready.`
-    );
+
+    MailerService.sendMail({
+      name: name.value,
+      email: email.value,
+      subject: subject.value,
+      message: message.value,
+    })
+      .then((res) => {
+        name.value = "";
+        email.value = "";
+        subject.value = "";
+        message.value = "";
+
+        setFeedback({ success: true, message: "Thanks for reaching out!" });
+      })
+      .catch((err) => {
+        setFeedback({
+          success: false,
+          message: "Uh oh. Something went wrong.",
+        });
+        console.error(err);
+      });
   };
 
   return (

@@ -14,8 +14,14 @@ exports.handler = async (event, context, callback) => {
   const msg = {
     to: REACT_APP_SENDGRID_TO,
     from: REACT_APP_SENDGRID_FROM,
-    subject: `Contact Form Submission from ${email}`,
-    html: `<h1>New inquiry:</h1><ul><li>Name: ${name}.</li><li>Email: ${email}.</li><li> Subject: ${subject}. </li><li>Message: ${message}.</li></ul>`,
+    replyTo: email || REACT_APP_SENDGRID_FROM,
+    templateId: "d-f9ef2cb4852a4b17b4f4b3ce5a02ac59",
+    dynamic_template_data: {
+      name,
+      email,
+      subject,
+      message,
+    },
   };
 
   try {
