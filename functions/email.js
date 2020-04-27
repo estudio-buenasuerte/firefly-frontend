@@ -29,7 +29,7 @@ router.route("/").post(bodyParser, (req, res) => {
     from: process.env.REACT_APP_EMAIL_ACCOUNT,
     to: "lucasvocos@gmail.com",
     subject: "New inquiry from Fireflydroneshows.com",
-    text: "test",
+    html: `<p>${message}</p>`,
   };
 
   transporter
