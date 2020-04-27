@@ -10,8 +10,10 @@ const app = express();
 
 const router = express.Router();
 
-let transporter = nodemailer.createTransport({
-  service: "gmail",
+let transporter = nodemailer.createTransport("SMTP", {
+  host: "smtp.gmail.com", // hostname
+  secureConnection: true, // use SSL
+  port: 465, // port for secure SMTP
   auth: {
     user: process.env.REACT_APP_EMAIL_ACCOUNT,
     pass: process.env.REACT_APP_EMAIL_PASSWORD,
@@ -34,18 +36,16 @@ router.route("/").post(bodyParser, (req, res) => {
     html: `<p>${message}</p>`,
   };
 
-  console.log(
-    transporter
-      .sendMail(mailOptions)
-      .then((response) => console.log("done!", response))
-  );
+  console.log(transporter.sendMail(mailOptions));
   transporter
     .sendMail(mailOptions)
     .then((response) => {
       console.log("Email sent from node!", response);
+      transporter.close();
     })
     .catch((error) => {
       console.error("Error!", error);
+      transporter.close();
     });
 
   res.status(200).json({
