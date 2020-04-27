@@ -25,6 +25,8 @@ app.use("/.netlify/functions/email", router);
 router.route("/").post(bodyParser, (req, res) => {
   const { name, email, subject, message } = req.body;
 
+  console.table(req.body);
+
   let mailOptions = {
     from: process.env.REACT_APP_EMAIL_ACCOUNT,
     to: "lucasvocos@gmail.com",
@@ -32,6 +34,7 @@ router.route("/").post(bodyParser, (req, res) => {
     html: `<p>${message}</p>`,
   };
 
+  console.log(transporter.sendMail(mailOptions));
   transporter
     .sendMail(mailOptions)
     .then((response) => {

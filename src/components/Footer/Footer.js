@@ -213,6 +213,12 @@ const List = styled.ul`
 
 const Title = styled.h3`
   margin: 0 0 20px 0;
+
+  @media (min-width: 1024px) {
+    &.form-title {
+      font-size: 32px;
+    }
+  }
 `;
 
 const Form = styled.form`
@@ -411,7 +417,7 @@ const Footer = ({ slimFooter }) => {
             </aside>
           </Section>
           <Section className="footer-form">
-            <Title>Let's Work Together</Title>
+            <Title className="form-title">Let's Work Together</Title>
             <Form onSubmit={submitForm}>
               <label htmlFor="name" className="invisible name">
                 Name

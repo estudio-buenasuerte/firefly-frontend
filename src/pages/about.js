@@ -78,7 +78,9 @@ const AboutSection = styled.section`
     .title {
       width: calc(25% - 20px);
       margin-left: auto;
-      font-size: 2rem;
+      h2 {
+        font-size: 46px;
+      }
     }
 
     .about-details {
@@ -100,8 +102,8 @@ const ConnectSection = styled.section`
 
     h3 {
       width: calc(25% - 20px);
-      margin-left: auto;
-      font-size: 3rem;
+      margin: 0 0 0 auto;
+      font-size: 32px;
     }
 
     form {
@@ -280,7 +282,7 @@ const About = () => {
       </AboutWrapper>
 
       <ConnectSection>
-        <Title>Let's Work Together</Title>
+        <h3>Let's Work Together</h3>
         <Form onSubmit={submitForm}>
           <label htmlFor="name" className="invisible name">
             Name

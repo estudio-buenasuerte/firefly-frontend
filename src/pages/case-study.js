@@ -28,7 +28,7 @@ const HeroTitleSection = styled.aside`
 
   @media (min-width: 1024px) {
     position: absolute;
-    left: 20px;
+    left: 0;
     bottom: 20px;
   }
 `;
