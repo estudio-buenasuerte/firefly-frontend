@@ -5,20 +5,12 @@ const express = require("express");
 const serverless = require("serverless-http");
 const cors = require("cors");
 const bodyParser = express.json();
-const nodemailer = require("nodemailer");
+const sgMail = require("@sendgrid/mail");
 const app = express();
 
 const router = express.Router();
 
-let transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com", // hostname
-  secureConnection: true, // use SSL
-  port: 465, // port for secure SMTP
-  auth: {
-    user: process.env.REACT_APP_EMAIL_ACCOUNT,
-    pass: process.env.REACT_APP_EMAIL_PASSWORD,
-  },
-});
+sgMail.setApiKey(process.env.REACT_APP_SENDGRID_KEY);
 
 app.use(cors());
 app.use(bodyParser);
@@ -27,26 +19,21 @@ app.use("/.netlify/functions/email", router);
 router.route("/").post(bodyParser, (req, res) => {
   const { name, email, subject, message } = req.body;
 
-  console.table(req.body);
-  console.log(name.value);
-
-  let mailOptions = {
-    from: process.env.REACT_APP_EMAIL_ACCOUNT,
+  const msg = {
     to: "lucasvocos@gmail.com",
-    subject: "New inquiry from Fireflydroneshows.com",
-    html: `<h1>New Message Received.</h1><ul><li>Name: ${name.value}</li><li>Email: ${email.value}</li> <li>Subject: ${subject.value}</li><li>Message:<p>${message.value}</p></li></ul>`,
+    from: "web@fireflydroneshows.com",
+    subject: "Message from SendGrid",
+    text: `Name: ${name}. Email: ${email}. Subject: ${subject}. Message: ${message}.`,
+    html: `<h1>New inquiry:</h1><ul><li>Name: ${name}.</li><li>Email: ${email}.</li><li> Subject: ${subject}. </li><li>Message: ${message}.</li></ul>`,
   };
 
-  console.log(transporter.sendMail(mailOptions));
-  transporter
-    .sendMail(mailOptions)
+  sgMail
+    .send(msg)
     .then((response) => {
-      console.log("Email sent from node!", response);
-      transporter.close();
+      console.log(`Message from ${email} sent!`, response);
     })
     .catch((error) => {
-      console.error("Error!", error);
-      transporter.close();
+      console.log(error.response.body);
     });
 
   res.status(200).json({
@@ -56,8 +43,6 @@ router.route("/").post(bodyParser, (req, res) => {
     message,
   });
 });
-
-function sendEmail(data) {}
 
 module.exports = app;
 module.exports.handler = serverless(app);
