@@ -10,7 +10,7 @@ const app = express();
 
 const router = express.Router();
 
-let transporter = nodemailer.createTransport("SMTP", {
+let transporter = nodemailer.createTransport({
   host: "smtp.gmail.com", // hostname
   secureConnection: true, // use SSL
   port: 465, // port for secure SMTP
@@ -28,12 +28,13 @@ router.route("/").post(bodyParser, (req, res) => {
   const { name, email, subject, message } = req.body;
 
   console.table(req.body);
+  console.log(name.value);
 
   let mailOptions = {
     from: process.env.REACT_APP_EMAIL_ACCOUNT,
     to: "lucasvocos@gmail.com",
     subject: "New inquiry from Fireflydroneshows.com",
-    html: `<p>${message}</p>`,
+    html: `<h1>New Message Received.</h1><ul><li>Name: ${name.value}</li><li>Email: ${email.value}</li> <li>Subject: ${subject.value}</li><li>Message:<p>${message.value}</p></li></ul>`,
   };
 
   console.log(transporter.sendMail(mailOptions));
