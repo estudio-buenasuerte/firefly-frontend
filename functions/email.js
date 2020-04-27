@@ -34,7 +34,11 @@ router.route("/").post(bodyParser, (req, res) => {
     html: `<p>${message}</p>`,
   };
 
-  console.log(transporter.sendMail(mailOptions));
+  console.log(
+    transporter
+      .sendMail(mailOptions)
+      .then((response) => console.log("done!", response))
+  );
   transporter
     .sendMail(mailOptions)
     .then((response) => {
