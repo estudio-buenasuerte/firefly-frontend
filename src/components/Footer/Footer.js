@@ -7,6 +7,7 @@ import DroneBlack from "../../images/drone-black.svg";
 import ArrowWhite from "../../images/arrow-white.svg";
 import ArrowBlack from "../../images/arrow-black.svg";
 import MailerService from "../../util/mailer";
+import xss from "xss";
 
 const FooterWrapper = styled.footer`
   box-sizing: border-box;
@@ -334,10 +335,10 @@ const Footer = ({ slimFooter }) => {
     const { name, email, subject, message } = e.target;
 
     MailerService.sendMail({
-      name: name.value,
-      email: email.value,
-      subject: subject.value,
-      message: message.value,
+      name: xss(name.value),
+      email: xss(email.value),
+      subject: xss(subject.value),
+      message: xss(message.value),
     })
       .then((res) => {
         name.value = "";

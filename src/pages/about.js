@@ -6,6 +6,7 @@ import SEO from "../components/seo";
 import BlockContent from "@sanity/block-content-to-react";
 import ArrowBlack from "../images/arrow-black.svg";
 import MailerService from "../util/mailer";
+import xss from "xss";
 
 const HeroSection = styled.section`
   width: 100%;
@@ -241,10 +242,10 @@ const About = () => {
     const { name, email, subject, message } = e.target;
 
     MailerService.sendMail({
-      name: name.value,
-      email: email.value,
-      subject: subject.value,
-      message: message.value,
+      name: xss(name.value),
+      email: xss(email.value),
+      subject: xss(subject.value),
+      message: xss(message.value),
     })
       .then((res) => {
         name.value = "";
