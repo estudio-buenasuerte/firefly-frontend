@@ -116,10 +116,6 @@ const Title = styled.p`
   margin: 0 0 10px;
   color: white;
   font-size: 18px;
-
-  @media (min-width: 1024px) {
-    font-size: 24px;
-  }
 `;
 
 const SubTitle = styled.p`
