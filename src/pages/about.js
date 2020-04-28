@@ -343,6 +343,11 @@ const About = () => {
           />
           <button type="submit">Send Message</button>
         </Form>
+        {feedback.message && (
+          <p className={feedback.success ? "success" : "error"}>
+            {feedback.message}
+          </p>
+        )}
       </ConnectSection>
     </Layout>
   );
