@@ -56,9 +56,10 @@ const AboutSection = styled.section`
   display: flex;
   flex-direction: column;
   color: #191d1e;
+  padding-bottom: 50px;
 
-  &:first-of-type {
-    padding-bottom: 50px;
+  &:last-of-type {
+    padding-bottom: 0;
   }
   h2,
   p {
@@ -71,9 +72,7 @@ const AboutSection = styled.section`
 
   @media (min-width: 1024px) {
     padding: 0 20px 100px;
-    &:first-of-type {
-      padding-bottom: 100px;
-    }
+
     flex-direction: row;
     align-items: flex-start;
 
@@ -128,10 +127,6 @@ const List = styled.ul`
       text-decoration: none;
     }
   }
-`;
-
-const Title = styled.h3`
-  margin: 0 0 20px 0;
 `;
 
 const Form = styled.form`
@@ -198,6 +193,30 @@ const Form = styled.form`
   }
 `;
 
+const ClientList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  align-content: center;
+  align-items: center;
+`;
+
+const ClientLogo = styled.li`
+  width: 50%;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+  img {
+    max-height: 50px;
+    width: auto;
+    max-width: 66.6%;
+  }
+
+  @media (min-width: 1024px) {
+    text-align: center;
+    width: 25%;
+  }
+`;
+
 const About = () => {
   const data = useStaticQuery(graphql`
     {
@@ -218,9 +237,10 @@ const About = () => {
             }
           }
           clientLogos {
+            _key
             asset {
-              title
               url
+              originalFilename
             }
           }
           goodForList {
@@ -304,6 +324,26 @@ const About = () => {
             </List>
           </aside>
         </AboutSection>
+        {aboutData.clientLogos && (
+          <AboutSection>
+            <aside className="title">
+              <h2>Select Clients:</h2>
+            </aside>
+            <ClientList className="about-details ">
+              {aboutData.clientLogos.map((logo) => {
+                return (
+                  <ClientLogo>
+                    <img
+                      src={logo.asset.url}
+                      key={logo._key}
+                      alt={logo.asset.originalFilename}
+                    />
+                  </ClientLogo>
+                );
+              })}
+            </ClientList>
+          </AboutSection>
+        )}
       </AboutWrapper>
 
       <ConnectSection>
