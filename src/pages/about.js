@@ -199,12 +199,20 @@ const ClientList = styled.ul`
   list-style-type: none;
   align-content: center;
   align-items: center;
+  margin-top: 40px;
+  padding: 0;
+
+  @media (min-width: 1024px) {
+    margin-top: 150px;
+  }
 `;
 
 const ClientLogo = styled.li`
   width: 50%;
   margin-bottom: 40px;
   box-sizing: border-box;
+  text-align: center;
+
   img {
     max-height: 50px;
     width: auto;
@@ -212,8 +220,8 @@ const ClientLogo = styled.li`
   }
 
   @media (min-width: 1024px) {
-    text-align: center;
     width: 25%;
+    margin-bottom: 60px;
   }
 `;
 
@@ -325,24 +333,23 @@ const About = () => {
           </aside>
         </AboutSection>
         {aboutData.clientLogos && (
-          <AboutSection>
-            <aside className="title">
+          <React.Fragment>
+            {/* <aside className="title">
               <h2>Select Clients:</h2>
-            </aside>
-            <ClientList className="about-details ">
+            </aside> */}
+            <ClientList className="about-details client-list">
               {aboutData.clientLogos.map((logo) => {
                 return (
-                  <ClientLogo>
+                  <ClientLogo key={logo._key}>
                     <img
                       src={logo.asset.url}
-                      key={logo._key}
                       alt={logo.asset.originalFilename}
                     />
                   </ClientLogo>
                 );
               })}
             </ClientList>
-          </AboutSection>
+          </React.Fragment>
         )}
       </AboutWrapper>
 
