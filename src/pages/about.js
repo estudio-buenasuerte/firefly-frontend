@@ -76,6 +76,10 @@ const AboutSection = styled.section`
     flex-direction: row;
     align-items: flex-start;
 
+    &:first-of-type {
+      padding: 0 20px 40px;
+    }
+
     .title {
       width: calc(25% - 20px);
       margin-left: auto;
@@ -125,6 +129,16 @@ const List = styled.ul`
 
     a {
       text-decoration: none;
+    }
+  }
+
+  &.good {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    li {
+      width: 40%;
     }
   }
 `;
@@ -321,10 +335,9 @@ const About = () => {
           </aside>
         </AboutSection>
         <AboutSection>
-          <aside className="title">
-            <h2>Our shows are perfect for:</h2>
-          </aside>
+          <aside className="title"></aside>
           <aside className="about-details">
+            <h3>Our shows are perfect for:</h3>
             <List className="good">
               {aboutData.goodForList.list.map((item) => (
                 <li key={item}>{item}</li>
