@@ -284,6 +284,7 @@ const Index = () => {
       }
     }
   `);
+
   const [homeData] = useState(data.allSanityHome.nodes[0]);
 
   const sliderSettings = {
@@ -292,6 +293,29 @@ const Index = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+  };
+
+  const isImage = (url) => {
+    const ending = url.split(".")[url.split(".").length - 1];
+    let result;
+
+    switch (ending) {
+      case "jpg":
+        result = true;
+        break;
+      case "png":
+        result = true;
+        break;
+      case "jpeg":
+        result = true;
+        break;
+      case "gif":
+        result = true;
+        break;
+      default:
+        break;
+    }
+    return result;
   };
 
   return (
@@ -303,12 +327,7 @@ const Index = () => {
             backgroundImage: "url(" + homeData.heroAsset.asset.url + ")",
           }}
         >
-          {homeData.heroAsset.asset.url.split(".")[
-            homeData.heroAsset.asset.url.split(".").length - 1
-          ] === "gif" ||
-          homeData.heroAsset.asset.url.split(".")[
-            homeData.heroAsset.asset.url.split(".").length - 1
-          ] === "png" ? (
+          {isImage(homeData.heroAsset.asset.url) ? (
             <img src={homeData.heroAsset.asset.url} alt="Firefly Drone Shows" />
           ) : (
             <>

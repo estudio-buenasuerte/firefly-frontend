@@ -7,6 +7,12 @@ import BlockContent from "@sanity/block-content-to-react";
 import ArrowBlack from "../images/arrow-black.svg";
 import MailerService from "../util/mailer";
 import xss from "xss";
+import {
+  Player,
+  ControlBar,
+  CurrentTimeDisplay,
+  VolumeMenuButton,
+} from "video-react";
 
 const HeroSection = styled.section`
   width: 100%;
@@ -239,6 +245,15 @@ const ClientLogo = styled.li`
   }
 `;
 
+const VideoMask = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+`;
+
 const About = () => {
   const data = useStaticQuery(graphql`
     {
@@ -279,6 +294,29 @@ const About = () => {
     message: null,
   });
 
+  const isImage = (url) => {
+    const ending = url.split(".")[url.split(".").length - 1];
+    let result;
+
+    switch (ending) {
+      case "jpg":
+        result = true;
+        break;
+      case "png":
+        result = true;
+        break;
+      case "jpeg":
+        result = true;
+        break;
+      case "gif":
+        result = true;
+        break;
+      default:
+        break;
+    }
+    return result;
+  };
+
   const submitForm = (e) => {
     e.preventDefault();
     const { name, email, subject, message } = e.target;
@@ -311,15 +349,24 @@ const About = () => {
       <SEO title="About" />
 
       <HeroSection>
-        {aboutData.heroAsset.asset.url.split(".")[
-          aboutData.heroAsset.asset.url.split(".").length - 1
-        ] === "gif" ||
-        aboutData.heroAsset.asset.url.split(".")[
-          aboutData.heroAsset.asset.url.split(".").length - 1
-        ] === "png" ? (
+        {isImage(aboutData.heroAsset.asset.url) ? (
           <img src={aboutData.heroAsset.asset.url} alt="Firefly Drone Shows" />
         ) : (
-          ""
+          <>
+            <VideoMask />
+            <Player
+              playsInline
+              autoPlay={true}
+              loop={true}
+              muted={true}
+              src={aboutData.heroAsset.asset.url}
+            >
+              <ControlBar autoHide={true}>
+                <CurrentTimeDisplay order={4.1} />
+                <VolumeMenuButton disabled />
+              </ControlBar>
+            </Player>
+          </>
         )}
       </HeroSection>
 
@@ -402,12 +449,12 @@ const About = () => {
             resize="false"
           />
           <button type="submit">Send Message</button>
+          {feedback.message && (
+            <p className={feedback.success ? "success" : "error"}>
+              {feedback.message}
+            </p>
+          )}
         </Form>
-        {feedback.message && (
-          <p className={feedback.success ? "success" : "error"}>
-            {feedback.message}
-          </p>
-        )}
       </ConnectSection>
     </Layout>
   );
