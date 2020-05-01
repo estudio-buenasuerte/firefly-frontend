@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import DroneWhite from "../../images/drone-white.svg";
 import Logo from "../../images/site-logo.svg";
 import styled from "styled-components";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import "../Layout/Layout.scss";
 
 const HeaderWrapper = styled.header`
@@ -16,6 +17,16 @@ const HeaderWrapper = styled.header`
   left: 0;
   top: 0;
   right: 0;
+
+  transition: transform 0.5s ease, background-color 0.5s ease;
+
+  &.scroll-down {
+    transform: translateY(calc(-100%));
+  }
+
+  &.scroll-up {
+    background-color: #1b1f21;
+  }
 
   @media (min-width: 1024px) {
     padding: 20px;
@@ -83,16 +94,34 @@ const MobileNav = styled.nav`
   }
 `;
 
-const Header = (props) => {
+const Header = () => {
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1024px)",
   });
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1023px)" });
 
   const [headerOpen, setHeaderOpen] = useState(false);
+
+  useScrollPosition(({ prevPos, currPos }) => {
+    const header = document.querySelector(".header");
+
+    if (currPos.y < prevPos.y) {
+      header.classList.add("scroll-down");
+      header.classList.remove("scroll-up");
+    } else {
+      header.classList.remove("scroll-down");
+      header.classList.add("scroll-up");
+    }
+
+    if (currPos.y === 0) {
+      header.classList.remove("scroll-up");
+      header.classList.remove("scroll-down");
+    }
+  });
+
   return (
     <React.Fragment>
-      <HeaderWrapper>
+      <HeaderWrapper className="header">
         <aside className="site-logo">
           <Link to={"/"}>
             <img src={Logo} alt="Firefly Logo" />
