@@ -63,7 +63,7 @@ const HeaderWrapper = styled.header`
 
 const MobileNav = styled.nav`
   width: 100vw;
-  background-color: #191d1e;
+  background-color: #000;
   position: fixed;
   z-index: 2;
   top: 0;

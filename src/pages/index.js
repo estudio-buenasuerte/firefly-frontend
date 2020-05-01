@@ -13,14 +13,20 @@ import {
   CurrentTimeDisplay,
   VolumeMenuButton,
 } from "video-react";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const HomeWrapper = styled.main`
   video {
-    /* background-color: #1b1f21; */
     background-color: #000;
+  }
+
+  .video-react {
+    .video-react-control-bar,
+    .video-react-big-play-button {
+      display: none;
+    }
   }
 `;
 
@@ -40,11 +46,6 @@ const HeroSection = styled.section`
     &:focus {
       outline: 1px solid transparent;
     }
-  }
-
-  .video-react-control-bar,
-  .video-react-big-play-button {
-    display: none;
   }
 
   @media (min-width: 1024px) {
@@ -103,9 +104,6 @@ const LottieSection = styled.section`
   .section-info {
     position: relative;
     width: 100%;
-
-    .video-react {
-    }
   }
 
   .section-info {
