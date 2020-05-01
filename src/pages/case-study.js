@@ -27,6 +27,7 @@ const HeroTitleSection = styled.aside`
   padding: 20px;
 
   @media (min-width: 1024px) {
+    padding: 20px 50px;
     position: absolute;
     left: 0;
     bottom: 20px;
@@ -66,6 +67,7 @@ const Step = styled.section`
   padding: 20px;
 
   @media (min-width: 1024px) {
+    padding: 20px 50px;
     margin: 150px 0;
     flex-direction: row;
     justify-content: flex-end;

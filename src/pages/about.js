@@ -36,7 +36,7 @@ const HeroText = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 300px 20px;
+    padding: 300px 50px;
 
     h1 {
       font-size: 3.5555555rem;
@@ -54,7 +54,7 @@ const AboutWrapper = styled.section`
   background-color: #d5dee2;
 
   @media (min-width: 1024px) {
-    padding: 300px 20px 200px;
+    padding: 300px 50px 200px;
   }
 `;
 
@@ -77,7 +77,7 @@ const AboutSection = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 0 20px 100px;
+    padding: 0 50px 100px;
 
     flex-direction: row;
     align-items: flex-start;
@@ -106,8 +106,9 @@ const ConnectSection = styled.section`
   padding: 100px 20px;
   display: flex;
   flex-direction: column;
+
   @media (min-width: 1024px) {
-    padding: 300px 20px;
+    padding: 300px 50px;
     flex-direction: row;
     align-items: flex-start;
 

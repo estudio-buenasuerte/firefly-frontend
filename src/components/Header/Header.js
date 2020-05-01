@@ -29,7 +29,7 @@ const HeaderWrapper = styled.header`
   }
 
   @media (min-width: 1024px) {
-    padding: 20px;
+    padding: 20px 50px;
   }
 
   a {
@@ -42,10 +42,10 @@ const HeaderWrapper = styled.header`
 
   .site-logo {
     img {
-      max-height: 32px;
+      max-height: 24px;
 
       @media (min-width: 1024px) {
-        max-height: 46px;
+        max-height: 36px;
       }
     }
   }

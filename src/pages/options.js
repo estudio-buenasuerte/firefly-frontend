@@ -16,7 +16,7 @@ const OptionsSection = styled.section`
   padding: 100px 20px;
 
   @media (min-width: 1024px) {
-    padding: 150px 20px 20px;
+    padding: 150px 50px 20px;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -120,7 +120,7 @@ const StockVSCustom = styled.section`
   flex-direction: column;
 
   @media (min-width: 1024px) {
-    padding: 20px;
+    padding: 20px 50px;
     margin: 150px 0;
     flex-direction: row;
   }
@@ -164,7 +164,7 @@ const ImageOnLeft = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 20px;
+    padding: 20px 50px;
     margin: 150px 0;
     flex-direction: row;
 
@@ -216,7 +216,7 @@ const ImageOnRight = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 20px;
+    padding: 20px 50px;
     margin: 150px 0;
     flex-direction: row;
 

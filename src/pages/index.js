@@ -63,7 +63,7 @@ const HeroText = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 150px 20px 100px;
+    padding: 150px 50px 100px;
 
     h1 {
       font-size: 3.5555555rem;
@@ -127,7 +127,7 @@ const LottieSection = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 0 20px 150px;
+    padding: 0 50px 150px;
     flex-direction: row;
     justify-content: space-between;
 
@@ -147,6 +147,10 @@ const LottieSection = styled.section`
       }
       p {
         font-size: 1.33333rem;
+      }
+      h2,
+      p {
+        max-width: 45ch;
       }
     }
   }
@@ -184,7 +188,7 @@ const TextSection = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 150px 20px;
+    padding: 150px 50px;
     flex-direction: row;
     justify-content: space-between;
 
@@ -195,6 +199,10 @@ const TextSection = styled.section`
       p,
       strong {
         font-size: 1.33333rem;
+      }
+      h2,
+      p {
+        max-width: 45ch;
       }
     }
 
@@ -233,7 +241,6 @@ const SliderSection = styled.section`
   }
   .slick-next {
     right: 0;
-    /* background-color: lightpink; */
   }
 
   .slick-dots {
