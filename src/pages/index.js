@@ -3,7 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
-import Transition from "../images/Transition_800.mp4";
+// import Transition from "../images/Transition_800.mp4";
+import Transition from "../images/200_800_V7_Black.mp4";
 import ArrowWhite from "../images/arrow-white.svg";
 import BlockContent from "@sanity/block-content-to-react";
 import {
@@ -18,7 +19,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 const HomeWrapper = styled.main`
   video {
-    background-color: #1b1f21;
+    /* background-color: #1b1f21; */
+    background-color: #000;
   }
 `;
 

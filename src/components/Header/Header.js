@@ -25,7 +25,8 @@ const HeaderWrapper = styled.header`
   }
 
   &.scroll-up {
-    background-color: #1b1f21;
+    /* background-color: #1b1f21; */
+    /* background-color: #000; */
   }
 
   @media (min-width: 1024px) {
