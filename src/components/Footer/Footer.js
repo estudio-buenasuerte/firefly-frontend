@@ -32,14 +32,14 @@ const FooterWrapper = styled.footer`
     }
 
     @media (min-width: 1024px) {
-      padding: 20px;
+      padding: 20px 50px;
       flex-direction: row;
     }
   }
 
   &.slim {
-    @media (min-height: 1024px) {
-      padding: 20px;
+    @media (min-width: 1024px) {
+      padding: 20px 50px;
     }
   }
 `;
