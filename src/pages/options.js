@@ -4,9 +4,9 @@ import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
 // import Saturn100 from "../images/100_800.mp4";
-import Saturn100 from "../images/100_720_V6.mp4";
-import Saturn200 from "../images/200_800.mp4";
-import Saturn300 from "../images/300_800.mp4";
+import Saturn100 from "../images/100_800_V7_Black.mp4";
+import Saturn200 from "../images/200_800_V7_Black.mp4";
+import Saturn300 from "../images/300_800_V7_Black.mp4";
 import BlockContent from "@sanity/block-content-to-react";
 import { Player } from "video-react";
 
