@@ -13,6 +13,10 @@ const FooterWrapper = styled.footer`
   box-sizing: border-box;
   padding: 20px;
 
+  .error {
+    color: red;
+  }
+
   &.full {
     background-color: #d5dee2;
     min-height: 100vh;
@@ -326,21 +330,6 @@ const CreditsWrapper = styled.section`
   }
 `;
 
-const serializers = {
-  marks: {
-    link: ({ mark, children }) => {
-      const { blank, href } = mark;
-      return blank ? (
-        <a href={href} target="_blank" rel="noopener">
-          {children}
-        </a>
-      ) : (
-        <a href={href}>{children}</a>
-      );
-    },
-  },
-};
-
 const Footer = ({ slimFooter }) => {
   const data = useStaticQuery(graphql`
     {
@@ -374,6 +363,14 @@ const Footer = ({ slimFooter }) => {
   const submitForm = (e) => {
     e.preventDefault();
     const { name, email, subject, message } = e.target;
+
+    if (!name.value || !email.value) {
+      setFeedback({
+        success: false,
+        message: "Your message is incomplete, please try again",
+      });
+      return;
+    }
 
     MailerService.sendMail({
       name: xss(name.value),

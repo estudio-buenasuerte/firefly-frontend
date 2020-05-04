@@ -326,6 +326,14 @@ const About = () => {
     e.preventDefault();
     const { name, email, subject, message } = e.target;
 
+    if (!name.value || !email.value) {
+      setFeedback({
+        success: false,
+        message: "Your message is incomplete, please try again",
+      });
+      return;
+    }
+
     MailerService.sendMail({
       name: xss(name.value),
       email: xss(email.value),
