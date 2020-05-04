@@ -3,7 +3,6 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import SEO from "../components/seo";
 import styled from "styled-components";
-// import Saturn100 from "../images/100_800.mp4";
 import Saturn100 from "../images/100_800_V7_Black.mp4";
 import Saturn200 from "../images/200_800_V7_Black.mp4";
 import Saturn300 from "../images/300_800_V7_Black.mp4";
@@ -86,7 +85,7 @@ const BigTitle = styled.h2`
   }
 `;
 
-const MediumTitle = styled.h3`
+const MediumTitle = styled.h2`
   font-size: 24px;
   margin: 0 0 20px 0;
 
@@ -114,32 +113,51 @@ const MediumLink = styled.span`
 `;
 
 const StockVSCustom = styled.section`
-  padding: 0 20px;
-  margin: 25px 0 50px;
+  padding: 150px 20px;
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 1024px) {
-    padding: 20px 50px;
-    margin: 150px 0;
-    flex-direction: row;
+  .section-info {
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+    }
+    p,
+    strong {
+      font-size: 1rem;
+    }
   }
-`;
-
-const StockVSCustomDiv = styled.aside`
-  margin-bottom: 50px;
 
   @media (min-width: 1024px) {
-    p {
-      max-width: 65ch;
-      font-size: 20px;
+    padding: 150px 50px;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .title-wrapper,
+    .section-info {
+      width: calc(50% - 10px);
+
+      p:first-of-type {
+        margin-top: 0;
+      }
+
+      p,
+      strong,
+      span {
+        font-size: 1.33333rem;
+      }
+      h2,
+      p {
+        max-width: 45ch;
+      }
     }
-    width: 50%;
-    &:first-of-type {
-      padding-right: 10px;
-    }
-    &:nth-of-type(2) {
-      padding-left: 10px;
+
+    .title-wrapper {
+      .title {
+        width: 50%;
+        margin-left: auto;
+        font-size: 2rem;
+      }
     }
   }
 `;
@@ -150,8 +168,19 @@ const ImageOnLeft = styled.section`
   flex-direction: column;
   margin-bottom: 50px;
 
+  .video-react-control-bar,
+  .video-react-big-play-button {
+    display: none;
+  }
+
   p {
     max-width: 70ch;
+  }
+
+  video {
+    &:focus {
+      outline: 1px solid transparent;
+    }
   }
 
   img {
@@ -192,8 +221,19 @@ const ImageOnRight = styled.section`
   flex-direction: column;
   margin-bottom: 50px;
 
+  .video-react-control-bar,
+  .video-react-big-play-button {
+    display: none;
+  }
+
   p {
     max-width: 70ch;
+  }
+
+  video {
+    &:focus {
+      outline: 1px solid transparent;
+    }
   }
 
   img {
@@ -241,6 +281,21 @@ const ImageOnRight = styled.section`
   }
 `;
 
+const serializers = {
+  marks: {
+    link: ({ mark, children }) => {
+      const { blank, href } = mark;
+      return blank ? (
+        <a href={href} target="_blank" rel="noopener">
+          {children}
+        </a>
+      ) : (
+        <a href={href}>{children}</a>
+      );
+    },
+  },
+};
+
 const Options = () => {
   const data = useStaticQuery(graphql`
     {
@@ -254,6 +309,16 @@ const Options = () => {
           oneHundredDroneImage {
             asset {
               url
+              mimeType
+              fluid {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
             }
           }
           _rawOneHundredDronesDescription
@@ -263,6 +328,16 @@ const Options = () => {
           twoHundredDroneImage {
             asset {
               url
+              mimeType
+              fluid {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
             }
           }
           _rawTwoHundredDronesDescription
@@ -272,6 +347,16 @@ const Options = () => {
           threeHundredDroneImage {
             asset {
               url
+              mimeType
+              fluid {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
             }
           }
           _rawThreeHundredDronesDescription
@@ -331,38 +416,50 @@ const Options = () => {
       </OptionsSection>
 
       <StockVSCustom>
-        <StockVSCustomDiv classname="stock">
-          {optionsData._rawStockDescription && (
-            <React.Fragment>
-              <MediumTitle>
-                {optionsData.stockTitle ? optionsData.stockTitle : "Stock"}
-              </MediumTitle>
-              <BlockContent blocks={optionsData._rawStockDescription} />
-            </React.Fragment>
+        <aside className="title-wrapper">
+          {optionsData.customTitle && (
+            <MediumTitle className="title">
+              {optionsData.customTitle ? optionsData.customTitle : "Custom"}
+            </MediumTitle>
           )}
-        </StockVSCustomDiv>
-        <StockVSCustomDiv className="custom">
+        </aside>
+        <aside className="section-info">
           {optionsData._rawCustomDescription && (
-            <React.Fragment>
-              <MediumTitle>
-                {optionsData.customTitle ? optionsData.customTitle : "Custom"}
-              </MediumTitle>
-              <BlockContent blocks={optionsData._rawCustomDescription} />
+            <>
+              <BlockContent
+                blocks={optionsData._rawCustomDescription}
+                serializers={serializers}
+              />
               <MediumLink>
                 <Link to={"/case-study"}>View Custom Case Study</Link>
               </MediumLink>
-            </React.Fragment>
+            </>
           )}
-        </StockVSCustomDiv>
+        </aside>
       </StockVSCustom>
 
       <ImageOnLeft>
         {optionsData.oneHundredDroneImage && (
           <aside className="img">
-            <img
-              src={optionsData.oneHundredDroneImage.asset.url}
-              alt="100 Drones"
-            />
+            {optionsData.oneHundredDroneImage.asset.mimeType.includes(
+              "image"
+            ) ? (
+              <img
+                src={optionsData.oneHundredDroneImage.asset.url}
+                alt="100 Drones"
+              />
+            ) : (
+              <div style={{ position: "relative" }}>
+                <VideoMask />
+                <Player
+                  playsInline={true}
+                  autoPlay={true}
+                  loop={true}
+                  src={optionsData.oneHundredDroneImage.asset.url}
+                  muted={true}
+                />
+              </div>
+            )}
           </aside>
         )}
         {optionsData._rawOneHundredDronesDescription && (
@@ -370,6 +467,7 @@ const Options = () => {
             <BigTitle>100 Drones</BigTitle>
             <BlockContent
               blocks={optionsData._rawOneHundredDronesDescription}
+              serializers={serializers}
             />
           </aside>
         )}
@@ -381,15 +479,31 @@ const Options = () => {
             <BigTitle>200 Drones</BigTitle>
             <BlockContent
               blocks={optionsData._rawTwoHundredDronesDescription}
+              serializers={serializers}
             />
           </aside>
         )}
         {optionsData.twoHundredDroneImage && (
           <aside className="img">
-            <img
-              src={optionsData.twoHundredDroneImage.asset.url}
-              alt="200 Drones"
-            />
+            {optionsData.twoHundredDroneImage.asset.mimeType.includes(
+              "image"
+            ) ? (
+              <img
+                src={optionsData.twoHundredDroneImage.asset.url}
+                alt="200 Drones"
+              />
+            ) : (
+              <div style={{ position: "relative" }}>
+                <VideoMask />
+                <Player
+                  playsInline={true}
+                  autoPlay={true}
+                  loop={true}
+                  src={optionsData.twoHundredDroneImage.asset.url}
+                  muted={true}
+                />
+              </div>
+            )}
           </aside>
         )}
       </ImageOnRight>
@@ -397,10 +511,25 @@ const Options = () => {
       <ImageOnLeft>
         {optionsData.threeHundredDroneImage && (
           <aside className="img">
-            <img
-              src={optionsData.threeHundredDroneImage.asset.url}
-              alt="300 Drones"
-            />
+            {optionsData.threeHundredDroneImage.asset.mimeType.includes(
+              "image"
+            ) ? (
+              <img
+                src={optionsData.threeHundredDroneImage.asset.url}
+                alt="300 Drones"
+              />
+            ) : (
+              <div style={{ position: "relative" }}>
+                <VideoMask />
+                <Player
+                  playsInline={true}
+                  autoPlay={true}
+                  loop={true}
+                  src={optionsData.threeHundredDroneImage.asset.url}
+                  muted={true}
+                />
+              </div>
+            )}
           </aside>
         )}
         {optionsData._rawThreeHundredDronesDescription && (
@@ -408,6 +537,7 @@ const Options = () => {
             <BigTitle>300 Drones</BigTitle>
             <BlockContent
               blocks={optionsData._rawThreeHundredDronesDescription}
+              serializers={serializers}
             />
           </aside>
         )}

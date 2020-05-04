@@ -55,7 +55,6 @@ const Work = () => {
                 description: item.description,
                 layout: item.assetLayout,
               }}
-              hideControls={false}
             />
           ))}
         </WorkList>

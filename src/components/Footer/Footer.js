@@ -326,6 +326,21 @@ const CreditsWrapper = styled.section`
   }
 `;
 
+const serializers = {
+  marks: {
+    link: ({ mark, children }) => {
+      const { blank, href } = mark;
+      return blank ? (
+        <a href={href} target="_blank" rel="noopener">
+          {children}
+        </a>
+      ) : (
+        <a href={href}>{children}</a>
+      );
+    },
+  },
+};
+
 const Footer = ({ slimFooter }) => {
   const data = useStaticQuery(graphql`
     {
@@ -426,7 +441,13 @@ const Footer = ({ slimFooter }) => {
                 {footerData.connectList.list.map((item) => {
                   return (
                     <li key={item.url}>
-                      <a href={item.url}>{item.title}</a>
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                      >
+                        {item.title}
+                      </a>
                     </li>
                   );
                 })}

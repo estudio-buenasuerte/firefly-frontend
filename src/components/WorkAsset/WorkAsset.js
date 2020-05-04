@@ -129,7 +129,7 @@ const SubTitle = styled.p`
   }
 `;
 
-const WorkAsset = ({ asset, hideControls, autoPlay }) => {
+const WorkAsset = ({ asset, autoPlay }) => {
   const isAssetImage = asset.type === "image/jpeg";
 
   return (
