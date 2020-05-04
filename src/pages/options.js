@@ -46,7 +46,6 @@ const OptionVidSection = styled.aside`
   }
 
   video {
-    /* background-color: #1b1f21; */
     background-color: #000000;
 
     &:focus {
