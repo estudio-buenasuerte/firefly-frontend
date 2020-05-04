@@ -81,7 +81,7 @@ const BigTitle = styled.h2`
     font-size: 48px;
   }
 
-  @media (min-width: 1400px) {
+  @media (min-width: 1800px) {
     font-size: 66px;
   }
 `;
@@ -95,7 +95,7 @@ const MediumTitle = styled.h3`
     font-size: 36px;
   }
 
-  @media (min-width: 1400px) {
+  @media (min-width: 1800px) {
     font-size: 48px;
   }
 `;
@@ -105,11 +105,11 @@ const MediumLink = styled.span`
   text-decoration: underline;
 
   &:hover {
-    opacity: 0.56;
+    opacity: 0.5;
   }
 
   @media (min-width: 1024px) {
-    font-size: 24px;
+    font-size: 20px;
   }
 `;
 

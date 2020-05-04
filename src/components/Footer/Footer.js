@@ -17,9 +17,8 @@ const FooterWrapper = styled.footer`
     background-color: #d5dee2;
     min-height: 100vh;
     color: black;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+
+    width: 100%;
     position: absolute;
     z-index: 10;
     overflow: hidden;
@@ -89,7 +88,25 @@ const Heading = styled.header`
   }
 `;
 
-const Section = styled.section`
+const SectionWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  left: 20px;
+  right: 20px;
+  order: 2;
+  height: auto;
+
+  @media (min-width: 1024px) {
+    position: absolute;
+    top: 33.3%;
+    flex-direction: row;
+    width: auto;
+    left: 50px;
+    right: 50px;
+  }
+`;
+
+const Aside = styled.aside`
   width: 100%;
 
   @media (min-width: 1024px) {
@@ -104,31 +121,29 @@ const Section = styled.section`
     margin-bottom: 40px;
     display: flex;
     flex-direction: column;
-
-    .contact {
+    .connect {
       order: 2;
     }
-    .good {
+    .about {
       order: 1;
     }
   }
   &.footer-form {
     order: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   @media (min-width: 1024px) {
     &.footer-links {
-      order: 2;
       margin-bottom: 0;
-      flex-direction: row;
+      height: auto;
 
-      .contact {
-        width: calc(50% - 20px);
-        padding-right: 20px;
+      .connect {
         order: 1;
       }
-
-      .good {
+      .about {
         order: 2;
       }
     }
@@ -210,6 +225,12 @@ const List = styled.ul`
     display: flex;
     flex-wrap: wrap;
   }
+
+  @media (min-width: 1024px) {
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 const Title = styled.h3`
@@ -281,16 +302,21 @@ const Form = styled.form`
 
   @media (min-width: 1024px) {
     margin-bottom: 0;
+    textarea {
+      padding: 10px 10px 100px;
+    }
   }
 `;
 
 const CreditsWrapper = styled.section`
   display: flex;
-  justify-content: space-between;
   margin-top: auto;
   display: flex;
   order: 4;
   width: 100%;
+  position: absolute;
+  bottom: 20px;
+
   small {
     font-size: 0.667em;
   }
@@ -393,8 +419,8 @@ const Footer = ({ slimFooter }) => {
             <img src={DroneBlack} alt="Firefly Drone" className="footer-icon" />
           </Heading>
 
-          <Section className="footer-links">
-            <aside className="contact">
+          <SectionWrapper>
+            <Aside className="footer-links">
               <List className="connect">
                 <Title>Connect</Title>
                 {footerData.connectList.list.map((item) => {
@@ -415,57 +441,57 @@ const Footer = ({ slimFooter }) => {
                   );
                 })}
               </List>
-            </aside>
-          </Section>
-          <Section className="footer-form">
-            <Title className="form-title">Let's Work Together</Title>
-            <Form onSubmit={submitForm}>
-              <label htmlFor="name" className="invisible name">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                className="name"
-                placeholder="Name"
-              />
-              <label htmlFor="email" className="invisible email">
-                Email Address
-              </label>
-              <input
-                type="email"
-                name="email"
-                className="email"
-                placeholder="Email Address"
-              />
-              <label htmlFor="subject" className="invisible subject">
-                Subject
-              </label>
-              <input
-                type="text"
-                name="subject"
-                className="subject"
-                placeholder="Subject"
-              />
-              <label htmlFor="message" className="invisible message">
-                Message
-              </label>
-              <textarea
-                type="text"
-                name="message"
-                className="message"
-                placeholder="Message"
-                resize="false"
-                data-gramm_editor="false"
-              />
-              <button type="submit">Send Message</button>
-            </Form>
-            {feedback.message && (
-              <p className={feedback.success ? "success" : "error"}>
-                {feedback.message}
-              </p>
-            )}
-          </Section>
+            </Aside>
+            <Aside className="footer-form">
+              <Title className="form-title">Let's Work Together</Title>
+              <Form onSubmit={submitForm}>
+                <label htmlFor="name" className="invisible name">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  className="name"
+                  placeholder="Name"
+                />
+                <label htmlFor="email" className="invisible email">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  className="email"
+                  placeholder="Email Address"
+                />
+                <label htmlFor="subject" className="invisible subject">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  className="subject"
+                  placeholder="Subject"
+                />
+                <label htmlFor="message" className="invisible message">
+                  Message
+                </label>
+                <textarea
+                  type="text"
+                  name="message"
+                  className="message"
+                  placeholder="Message"
+                  resize="false"
+                  data-gramm_editor="false"
+                />
+                <button type="submit">Send Message</button>
+              </Form>
+              {feedback.message && (
+                <p className={feedback.success ? "success" : "error"}>
+                  {feedback.message}
+                </p>
+              )}
+            </Aside>
+          </SectionWrapper>
         </React.Fragment>
       )}
       <CreditsWrapper>

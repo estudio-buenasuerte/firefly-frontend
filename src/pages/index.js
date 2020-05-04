@@ -72,7 +72,7 @@ const HeroText = styled.section`
     }
   }
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1800px) {
     h1 {
       font-size: 5rem;
     }
@@ -299,6 +299,8 @@ const Index = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 5000,
   };
 
   const isImage = (url) => {

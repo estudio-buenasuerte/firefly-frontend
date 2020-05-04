@@ -43,7 +43,7 @@ const HeroText = styled.section`
     }
   }
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1800px) {
     h1 {
       font-size: 5rem;
     }
@@ -211,6 +211,10 @@ const Form = styled.form`
 
   @media (min-width: 1024px) {
     margin-bottom: 0;
+
+    textarea {
+      padding: 10px 10px 100px;
+    }
   }
 `;
 

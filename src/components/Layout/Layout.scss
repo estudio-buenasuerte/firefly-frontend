@@ -33,6 +33,10 @@ body {
 
 a {
   color: inherit;
+
+  &:hover {
+    opacity: 0.5;
+  }
 }
 h1,
 h2,

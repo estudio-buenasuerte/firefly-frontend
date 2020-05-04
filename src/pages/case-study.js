@@ -43,7 +43,7 @@ const HeroTitle = styled.h1`
     padding-right: 20px;
   }
 
-  @media (min-width: 1400px) {
+  @media (min-width: 1800px) {
     font-size: 6rem;
   }
 `;
@@ -96,7 +96,7 @@ const Step = styled.section`
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1800px) {
     p {
       font-size: 24px;
     }
@@ -113,7 +113,7 @@ const StepSectionTitle = styled.h3`
     padding: 0 0 40px;
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1800px) {
     font-size: 66px;
   }
 `;
