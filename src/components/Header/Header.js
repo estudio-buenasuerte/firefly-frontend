@@ -46,7 +46,7 @@ const HeaderWrapper = styled.header`
       max-height: 24px;
 
       @media (min-width: 1024px) {
-        max-height: 36px;
+        max-height: 42px;
       }
     }
   }
