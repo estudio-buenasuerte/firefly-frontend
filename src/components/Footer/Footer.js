@@ -12,6 +12,7 @@ import xss from "xss";
 const FooterWrapper = styled.footer`
   box-sizing: border-box;
   padding: 20px;
+  position: relative;
 
   .error {
     color: red;
