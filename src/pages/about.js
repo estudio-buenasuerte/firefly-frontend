@@ -158,6 +158,12 @@ const Form = styled.form`
   position: relative;
   margin-bottom: 40px;
 
+  .success,
+  .error {
+    position: relative;
+    top: 40px;
+  }
+
   label {
     visibility: hidden;
     position: absolute;
@@ -214,6 +220,11 @@ const Form = styled.form`
 
     textarea {
       padding: 10px 10px 100px;
+    }
+    .success,
+    .error {
+      position: relative;
+      top: 0px;
     }
   }
 `;
