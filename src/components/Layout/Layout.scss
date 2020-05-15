@@ -2,59 +2,60 @@
 $background: #000000;
 $blue: #d5dee2;
 $white: #fff;
-$font: "Zwizz", "Helvetica Neue", Helvetica, sans-serif;
+$font: 'Zwizz', 'Helvetica Neue', Helvetica, sans-serif;
 
 @font-face {
-  font-family: "Zwizz";
-  src: url("../../font/Zwizz-Regular.eot");
-  src: url("../../font/Zwizz-Regular.eot?#iefix") format("embedded-opentype"),
-    url("../../font/Zwizz-Regular.woff2") format("woff2"),
-    url("../../font/Zwizz-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'Zwizz';
+	src: url('../../font/Zwizz-Regular.eot');
+	src: url('../../font/Zwizz-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../../font/Zwizz-Regular.woff2') format('woff2'),
+		url('../../font/Zwizz-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 html {
-  font-size: 18px;
+	font-size: 18px;
 }
 
 #___gatsby {
-  overflow-x: hidden;
+	overflow-x: hidden;
 }
 
 body {
-  font-family: $font;
-  font-size: 100%;
-  background-color: $background;
-  color: $white;
-  margin: 0;
-  padding: 0;
+	font-family: $font;
+	font-size: 100%;
+	background-color: $background;
+	color: $white;
+	margin: 0;
+	padding: 0;
 }
 
 a {
-  color: inherit;
+	color: inherit;
 
-  &:hover {
-    opacity: 0.5;
-  }
+	&:hover {
+		opacity: 0.5;
+	}
 }
 h1,
 h2,
 h3 {
-  font-weight: normal;
+	font-weight: normal;
 }
 
 .slick-prev {
-  &:before {
-    background-image: url(../../images/arrow-white.svg);
-    transform: rotate(180deg);
-    margin-left: 20px;
-  }
+	&:before {
+		background-image: url(../../images/arrow-white.svg);
+		transform: rotate(180deg);
+		margin-left: 20px;
+	}
 }
 .slick-next {
-  &:before {
-    background-image: url(../../images/arrow-white.svg);
-    margin-left: auto;
-    margin-right: 20px;
-  }
+	&:before {
+		background-image: url(../../images/arrow-white.svg);
+		margin-left: auto;
+		margin-right: 20px;
+	}
 }
