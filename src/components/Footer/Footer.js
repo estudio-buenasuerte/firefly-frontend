@@ -463,7 +463,7 @@ const Footer = ({ slimFooter }) => {
 						</Aside>
 						<Aside className="footer-form">
 							<Title className="form-title">Let's Work Together</Title>
-							<Form onSubmit={submitForm} data-netlify="true">
+							<Form name={'footer'} onSubmit={submitForm} data-netlify="true">
 								<label htmlFor="name" className="invisible name">
 									Name
 								</label>
