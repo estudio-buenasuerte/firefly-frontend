@@ -1,5 +1,3 @@
-import { format } from 'prettier';
-
 const MailerService = {
 	async sendMail(data) {
 		const { form, name, email, subject, message } = data;
