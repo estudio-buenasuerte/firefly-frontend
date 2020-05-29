@@ -1,6 +1,8 @@
+import { format } from 'prettier';
+
 const MailerService = {
 	async sendMail(data) {
-		const { name, email, subject, message } = data;
+		const { form, name, email, subject, message } = data;
 
 		fetch('/.netlify/functions/email', {
 			method: 'POST',
@@ -8,6 +10,7 @@ const MailerService = {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
+				'form-name': form,
 				name,
 				email,
 				subject,

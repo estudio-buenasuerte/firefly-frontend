@@ -347,6 +347,7 @@ const About = () => {
 		}
 
 		MailerService.sendMail({
+			form: 'about',
 			name: xss(name.value),
 			email: xss(email.value),
 			subject: xss(subject.value),

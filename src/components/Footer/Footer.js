@@ -374,6 +374,7 @@ const Footer = ({ slimFooter }) => {
 		}
 
 		MailerService.sendMail({
+			form: 'footer',
 			name: xss(name.value),
 			email: xss(email.value),
 			subject: xss(subject.value),
