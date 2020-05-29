@@ -441,6 +441,7 @@ const About = () => {
 			<ConnectSection>
 				<h3>Let's Work Together</h3>
 				<Form name={'about'} onSubmit={submitForm} data-netlify="true">
+					<input type="hidden" name="form-name" value="about" />
 					<label htmlFor="name" className="invisible name">
 						Name
 					</label>
