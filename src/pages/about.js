@@ -440,7 +440,7 @@ const About = () => {
 
 			<ConnectSection>
 				<h3>Let's Work Together</h3>
-				<Form onSubmit={submitForm}>
+				<Form onSubmit={submitForm} data-netlify="true">
 					<label htmlFor="name" className="invisible name">
 						Name
 					</label>
