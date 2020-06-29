@@ -304,7 +304,6 @@ const Options = () => {
 					oneHundredTitle
 					twoHundredTitle
 					threeHundredTitle
-					_rawStockDescription
 					_rawCustomDescription
 					_rawOneHundredDronesDescription
 					oneHundredDronesList {
@@ -318,7 +317,6 @@ const Options = () => {
 					threeHundredDronesList {
 						list
 					}
-					stockTitle
 					customTitle
 				}
 			}
