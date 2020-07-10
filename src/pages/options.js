@@ -318,10 +318,32 @@ const Options = () => {
 						list
 					}
 					customTitle
+					oneHundredDroneImage {
+						asset {
+							_type
+							url
+							mimeType
+						}
+					}
+					twoHundredDroneImage {
+						_type
+						asset {
+							url
+							mimeType
+						}
+					}
+					threeHundredDroneImage {
+						_type
+						asset {
+							url
+							mimeType
+						}
+					}
 				}
 			}
 		}
 	`);
+
 	const [optionsData] = useState(data.allSanityOptions.nodes[0]);
 
 	return (
