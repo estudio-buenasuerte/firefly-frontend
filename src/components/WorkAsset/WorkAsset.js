@@ -140,6 +140,7 @@ const WorkAsset = ({ asset }) => {
 							showControls={true}
 							muted={false}
 							loop={true}
+							playsInline={true}
 						/>
 					) : (
 						<Img

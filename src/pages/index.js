@@ -331,6 +331,7 @@ const Index = () => {
 						showControls={false}
 						muted={true}
 						loop={true}
+						playsInline={true}
 					/>
 				</HeroSection>
 
