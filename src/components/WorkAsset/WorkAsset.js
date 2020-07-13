@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 import 'video-react/dist/video-react.css';
 import SanityMuxPlayer from 'sanity-mux-player';
 
@@ -8,8 +9,8 @@ const AssetWrapper = styled.article`
 	padding: 0 0 20px;
 	font-family: 'Zwizz';
 
-	img {
-		padding-bottom: 20px;
+	.gatsby-image-wrapper {
+		margin-bottom: 20px;
 	}
 
 	img,
@@ -141,7 +142,10 @@ const WorkAsset = ({ asset }) => {
 							loop={true}
 						/>
 					) : (
-						<img src={asset.imageUrl} alt={asset.title ? asset.title : ''} />
+						<Img
+							fluid={asset.image.fluid}
+							alt={asset.title ? asset.title : ''}
+						/>
 					)}
 				</React.Fragment>
 			)}

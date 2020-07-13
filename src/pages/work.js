@@ -79,7 +79,7 @@ const Work = () => {
 								key={item._key}
 								asset={{
 									type: item?.type,
-									imageUrl: item.asset.asset.url,
+									image: item?.image?.asset,
 									title: item.title,
 									description: item.description,
 									layout: item.assetLayout,
