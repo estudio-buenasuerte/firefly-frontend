@@ -35,6 +35,7 @@
     "react-slick": "^0.25.2",
     "react-swipeable": "^5.5.1",
     "reset-css": "^5.0.1",
+    "sanity-mux-player": "0.0.26",
     "sendgrid": "^5.2.3",
     "sharp": "^0.25.2",
     "slick-carousel": "^1.8.1",
