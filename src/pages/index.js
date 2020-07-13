@@ -260,11 +260,6 @@ const Index = () => {
 			allSanityHome {
 				nodes {
 					_rawHeroMuxVideo(resolveReferences: { maxDepth: 10 })
-					heroAsset {
-						asset {
-							url
-						}
-					}
 					heroText
 					section1Heading
 					_rawSection1Description
@@ -289,7 +284,6 @@ const Index = () => {
 	`);
 
 	const [homeData] = useState(data.allSanityHome.nodes[0]);
-	// debugger;
 
 	const sliderSettings = {
 		dots: true,
@@ -328,26 +322,16 @@ const Index = () => {
 		<Layout slimFooter={false}>
 			<SEO title="Home" />
 			<HomeWrapper>
-				<HeroSection
-					style={{
-						backgroundImage: 'url(' + homeData.heroAsset.asset.url + ')',
-					}}
-				>
-					{isImage(homeData.heroAsset.asset.url) ? (
-						<img src={homeData.heroAsset.asset.url} alt="Firefly Drone Shows" />
-					) : (
-						<>
-							<VideoMask />
-							<SanityMuxPlayer
-								assetDocument={homeData._rawHeroMuxVideo.asset}
-								autoload={true}
-								autoplay={true}
-								showControls={false}
-								muted={true}
-								loop={true}
-							/>
-						</>
-					)}
+				<HeroSection>
+					<VideoMask />
+					<SanityMuxPlayer
+						assetDocument={homeData._rawHeroMuxVideo.asset}
+						autoload={true}
+						autoplay={true}
+						showControls={false}
+						muted={true}
+						loop={true}
+					/>
 				</HeroSection>
 
 				<HeroText>
