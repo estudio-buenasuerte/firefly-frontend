@@ -24,12 +24,6 @@ const Work = () => {
 				nodes {
 					workList {
 						_key
-						asset {
-							asset {
-								url
-								mimeType
-							}
-						}
 						title
 						description
 						assetLayout
