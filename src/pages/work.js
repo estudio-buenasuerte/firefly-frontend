@@ -62,8 +62,6 @@ const Work = () => {
 
 	const [projectList] = useState(newList);
 
-	debugger;
-
 	return (
 		<Layout>
 			<SEO title="Work" description="" />
