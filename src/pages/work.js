@@ -24,6 +24,7 @@ const Work = () => {
 				nodes {
 					workList {
 						_key
+						type
 						title
 						description
 						assetLayout
@@ -60,6 +61,8 @@ const Work = () => {
 	});
 
 	const [projectList] = useState(newList);
+
+	debugger;
 
 	return (
 		<Layout>

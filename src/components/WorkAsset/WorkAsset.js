@@ -144,7 +144,7 @@ const WorkAsset = ({ asset }) => {
 						/>
 					) : (
 						<Img
-							fluid={asset.image.fluid}
+							fluid={asset?.image?.fluid}
 							alt={asset.title ? asset.title : ''}
 						/>
 					)}
