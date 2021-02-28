@@ -286,7 +286,7 @@ const serializers = {
 		link: ({ mark, children }) => {
 			const { blank, href } = mark;
 			return blank ? (
-				<a href={href} target="_blank" rel="noopener">
+				<a href={href} target='_blank' rel='noopener noreferrer'>
 					{children}
 				</a>
 			) : (
@@ -348,63 +348,42 @@ const Options = () => {
 
 	return (
 		<Layout slimFooter={false}>
-			<SEO title="Options" />
+			<SEO title='Options' />
 
 			<OptionsSection>
 				<OptionVidSection>
 					<VideoMask />
-					<Player
-						playsInline={true}
-						autoPlay={true}
-						loop={true}
-						src={Saturn100}
-						muted={true}
-					/>
+					<Player playsInline={true} autoPlay={true} loop={true} src={Saturn100} muted={true} />
 
 					<BigTitle>100 Drones</BigTitle>
 					<h3>{optionsData.oneHundredTitle}</h3>
 				</OptionVidSection>
 				<OptionVidSection>
 					<VideoMask />
-					<Player
-						playsInline={true}
-						autoPlay={true}
-						loop={true}
-						src={Saturn200}
-						muted={true}
-					/>
+					<Player playsInline={true} autoPlay={true} loop={true} src={Saturn200} muted={true} />
 					<BigTitle>200 Drones</BigTitle>
 					<h3>{optionsData.twoHundredTitle}</h3>
 				</OptionVidSection>
 				<OptionVidSection>
 					<VideoMask />
-					<Player
-						playsInline={true}
-						autoPlay={true}
-						loop={true}
-						src={Saturn300}
-						muted={true}
-					/>
+					<Player playsInline={true} autoPlay={true} loop={true} src={Saturn300} muted={true} />
 					<BigTitle>300 Drones</BigTitle>
 					<h3>{optionsData.threeHundredTitle}</h3>
 				</OptionVidSection>
 			</OptionsSection>
 
 			<StockVSCustom>
-				<aside className="title-wrapper">
+				<aside className='title-wrapper'>
 					{optionsData.customTitle && (
-						<MediumTitle className="title">
+						<MediumTitle className='title'>
 							{optionsData.customTitle ? optionsData.customTitle : 'Custom'}
 						</MediumTitle>
 					)}
 				</aside>
-				<aside className="section-info">
+				<aside className='section-info'>
 					{optionsData._rawCustomDescription && (
 						<>
-							<BlockContent
-								blocks={optionsData._rawCustomDescription}
-								serializers={serializers}
-							/>
+							<BlockContent blocks={optionsData._rawCustomDescription} serializers={serializers} />
 							<MediumLink>
 								<Link to={'/case-study'}>View Custom Case Study</Link>
 							</MediumLink>
@@ -415,14 +394,9 @@ const Options = () => {
 
 			<ImageOnLeft>
 				{optionsData.oneHundredDroneImage && (
-					<aside className="img">
-						{optionsData.oneHundredDroneImage.asset.mimeType.includes(
-							'image'
-						) ? (
-							<img
-								src={optionsData.oneHundredDroneImage.asset.url}
-								alt="100 Drones"
-							/>
+					<aside className='img'>
+						{optionsData.oneHundredDroneImage.asset.mimeType.includes('image') ? (
+							<img src={optionsData.oneHundredDroneImage.asset.url} alt='100 Drones' />
 						) : (
 							<div style={{ position: 'relative' }}>
 								<VideoMask />
@@ -438,35 +412,24 @@ const Options = () => {
 					</aside>
 				)}
 				{optionsData._rawOneHundredDronesDescription && (
-					<aside className="desc">
+					<aside className='desc'>
 						<BigTitle>100 Drones</BigTitle>
-						<BlockContent
-							blocks={optionsData._rawOneHundredDronesDescription}
-							serializers={serializers}
-						/>
+						<BlockContent blocks={optionsData._rawOneHundredDronesDescription} serializers={serializers} />
 					</aside>
 				)}
 			</ImageOnLeft>
 
 			<ImageOnRight>
 				{optionsData._rawTwoHundredDronesDescription && (
-					<aside className="desc">
+					<aside className='desc'>
 						<BigTitle>200 Drones</BigTitle>
-						<BlockContent
-							blocks={optionsData._rawTwoHundredDronesDescription}
-							serializers={serializers}
-						/>
+						<BlockContent blocks={optionsData._rawTwoHundredDronesDescription} serializers={serializers} />
 					</aside>
 				)}
 				{optionsData.twoHundredDroneImage && (
-					<aside className="img">
-						{optionsData.twoHundredDroneImage.asset.mimeType.includes(
-							'image'
-						) ? (
-							<img
-								src={optionsData.twoHundredDroneImage.asset.url}
-								alt="200 Drones"
-							/>
+					<aside className='img'>
+						{optionsData.twoHundredDroneImage.asset.mimeType.includes('image') ? (
+							<img src={optionsData.twoHundredDroneImage.asset.url} alt='200 Drones' />
 						) : (
 							<div style={{ position: 'relative' }}>
 								<VideoMask />
@@ -485,14 +448,9 @@ const Options = () => {
 
 			<ImageOnLeft>
 				{optionsData.threeHundredDroneImage && (
-					<aside className="img">
-						{optionsData.threeHundredDroneImage.asset.mimeType.includes(
-							'image'
-						) ? (
-							<img
-								src={optionsData.threeHundredDroneImage.asset.url}
-								alt="300 Drones"
-							/>
+					<aside className='img'>
+						{optionsData.threeHundredDroneImage.asset.mimeType.includes('image') ? (
+							<img src={optionsData.threeHundredDroneImage.asset.url} alt='300 Drones' />
 						) : (
 							<div style={{ position: 'relative' }}>
 								<VideoMask />
@@ -508,7 +466,7 @@ const Options = () => {
 					</aside>
 				)}
 				{optionsData._rawThreeHundredDronesDescription && (
-					<aside className="desc">
+					<aside className='desc'>
 						<BigTitle>300 Drones</BigTitle>
 						<BlockContent
 							blocks={optionsData._rawThreeHundredDronesDescription}

@@ -143,10 +143,7 @@ const WorkAsset = ({ asset }) => {
 							playsInline={true}
 						/>
 					) : (
-						<Img
-							fluid={asset?.image?.fluid}
-							alt={asset.title ? asset.title : ''}
-						/>
+						<Img fluid={asset?.image?.fluid} alt={asset.title ? asset.title : ''} />
 					)}
 				</React.Fragment>
 			)}

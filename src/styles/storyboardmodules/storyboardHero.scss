@@ -1,0 +1,56 @@
+.storyboard__hero {
+	position: relative;
+
+	@media (min-width: 1024px) {
+		height: 100vh;
+		overflow: hidden;
+	}
+}
+.gatsby-image-wrapper {
+	@media (min-width: 1024px) {
+		height: 100vh;
+	}
+}
+.storyboard__header {
+	position: fixed;
+	top: 0px;
+	padding-top: 20px;
+	left: 20px;
+	z-index: 2;
+	width: 100px;
+	transition: transform 400ms ease;
+	display: block;
+
+	@media (min-width: 1024px) {
+		width: 160px;
+		padding-top: 40px;
+		left: 40px;
+	}
+
+	&.scroll-down {
+		transform: translateY(-100%);
+	}
+}
+.storyboard__client,
+.storyboard__title {
+	position: absolute;
+	margin: 0;
+	bottom: 20px;
+	@media (min-width: 1024px) {
+		bottom: 40px;
+		font-size: 28px;
+	}
+}
+
+.storyboard__client {
+	left: 20px;
+	@media (min-width: 1024px) {
+		left: 40px;
+	}
+}
+.storyboard__title {
+	right: 20px;
+	@media (min-width: 1024px) {
+		right: 40px;
+	}
+}
