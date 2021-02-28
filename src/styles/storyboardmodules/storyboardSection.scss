@@ -193,8 +193,10 @@ img {
 	transform: translateY(-50%);
 	background-color: transparent;
 	border: 0;
-	svg {
-		fill: white;
+	cursor: pointer;
+
+	&:focus {
+		outline: 1px dotted white;
 	}
 }
 

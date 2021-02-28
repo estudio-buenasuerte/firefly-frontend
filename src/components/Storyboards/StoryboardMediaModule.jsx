@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import cx from 'classnames';
 import Img from 'gatsby-image';
@@ -11,7 +11,6 @@ export const TRANSITION_DURATION = 400;
 const TRANSITION_STYLES = {
 	default: {
 		transition: `opacity ${TRANSITION_DURATION}ms ease, transform ${TRANSITION_DURATION}ms ease`,
-		opacity: 0,
 	},
 	entering: {
 		opacity: 0,
@@ -29,7 +28,7 @@ const TRANSITION_STYLES = {
 
 const SLIDE_TRANSITION_STYLES = {
 	default: {
-		transition: `opacity ${TRANSITION_DURATION}ms ease`,
+		transition: `opacity 200ms ease`,
 	},
 	entering: {
 		opacity: 0,
@@ -48,6 +47,46 @@ const SLIDE_TRANSITION_STYLES = {
 const StoryboardMediaModule = ({ title, description, index, layout, lightbox, media = [] }) => {
 	const [isLightboxOpen, setLightBoxOpen] = useState(false);
 	const [currentSlide, setCurrentSlide] = React.useState(0);
+
+	const goNext = () => {
+		let nextIndex = currentSlide + 1;
+
+		if (nextIndex >= media.length - 1) {
+			nextIndex = 0;
+		}
+
+		setCurrentSlide(nextIndex);
+	};
+
+	const goBack = () => {
+		let nextIndex = currentSlide - 1;
+
+		if (nextIndex < 0) {
+			nextIndex = media.length - 1;
+		}
+
+		setCurrentSlide(nextIndex);
+	};
+
+	useEffect(() => {
+		window.addEventListener('keydown', event => {
+			if (isLightboxOpen) {
+				switch (event.code) {
+					case 'ArrowLeft':
+						goBack();
+						break;
+					case 'ArrowRight':
+						goNext();
+						break;
+					default:
+						break;
+				}
+			}
+		});
+		return () => {
+			window.removeEventListener('keydown', () => {});
+		};
+	}, []);
 
 	return (
 		<React.Fragment>
@@ -135,7 +174,9 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 								/>
 							</svg>
 						</button>
-						<button className='storyboard__modal-navigation storyboard__modal-navigation--left'>
+						<button
+							onClick={goBack}
+							className='storyboard__modal-navigation storyboard__modal-navigation--left'>
 							<svg
 								width='20'
 								height='33'
@@ -148,7 +189,9 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 								/>
 							</svg>
 						</button>
-						<button className='storyboard__modal-navigation storyboard__modal-navigation--right'>
+						<button
+							onClick={goNext}
+							className='storyboard__modal-navigation storyboard__modal-navigation--right'>
 							<svg
 								width='21'
 								height='33'
@@ -163,20 +206,45 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 						</button>
 						<SwitchTransition>
 							<Transition
-								key={currentSlide._key}
-								in={!!currentSlide}
+								key={media[currentSlide]._key}
 								mountOnEnter
 								unmountOnExit
 								appear
 								timeout={TRANSITION_DURATION}>
 								{status => (
 									<article
-										className=''
+										className={cx('storyboard__modal-slide')}
 										style={{
 											...SLIDE_TRANSITION_STYLES.default,
 											...SLIDE_TRANSITION_STYLES[status],
 										}}>
-										{/* {console.log(media[currentSlide])} */}
+										{media[currentSlide]._type == 'storyboardImage' ? (
+											<picture>
+												<source
+													srcSet={`${media[currentSlide].image.asset.url}?w=1600&auto=format`}
+													media='(min-width: 1000px)'
+												/>
+												<source
+													srcSet={`${media[currentSlide].image.asset.url}?w=1000&auto=format`}
+													media='(min-width: 600px)'
+												/>
+												<img
+													alt={'Project Image'}
+													src={`${media[currentSlide].image.asset.url}?w=400&auto=format`}
+													className=''
+												/>
+											</picture>
+										) : (
+											<SanityMuxPlayer
+												assetDocument={media[currentSlide].video.asset}
+												autoload={true}
+												autoplay={true}
+												showControls={true}
+												muted={false}
+												loop={true}
+												playsInline={true}
+											/>
+										)}
 										{media[currentSlide].title && <p>{media[currentSlide].title}</p>}
 									</article>
 								)}
