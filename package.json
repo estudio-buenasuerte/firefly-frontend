@@ -1,9 +1,8 @@
 {
-  "name": "your-project-title",
+  "name": "firefly-drones",
   "private": true,
-  "description": "Boilerplate for Gatsby + Sanity + Shopify",
   "version": "0.1.0",
-  "author": "You <your-email@domain.com>",
+  "author": "Estudio Buena Suerte <info@buena-suerte.studio>",
   "dependencies": {
     "@n8tb1t/use-scroll-position": "^1.0.43",
     "@sanity/block-content-to-react": "^2.0.7",
