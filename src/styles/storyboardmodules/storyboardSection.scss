@@ -207,7 +207,7 @@
 	align-items: center;
 	color: white;
 
-	padding: 60px 20px;
+	padding: 60px 40px;
 
 	@media (min-width: 1024px) {
 		padding: 120px;
@@ -281,6 +281,11 @@
 
 .storyboard__modal-slide {
 	text-align: center;
+
+	img {
+		max-width: 100%;
+		width: 100%;
+	}
 }
 .storyboard__modal-title {
 	margin: 0;
