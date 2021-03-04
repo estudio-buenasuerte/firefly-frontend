@@ -17,12 +17,17 @@
 	padding-top: 20px;
 	left: 20px;
 	z-index: 2;
-	width: 100px;
+	width: 48px;
 	transition: transform 400ms ease;
 	display: block;
 
+	img {
+		width: 100%;
+		max-width: 100%;
+	}
+
 	@media (min-width: 1024px) {
-		width: 160px;
+		width: 125px;
 		padding-top: 40px;
 		left: 40px;
 	}
@@ -49,10 +54,12 @@
 
 .storyboard__client,
 .storyboard__title {
-	font-size: 28px;
+	// font-size: 28px;
+	font-size: 16px;
 	margin: 0;
 	@media (min-width: 1024px) {
-		font-size: 52px;
+		// font-size: 52px;
+		font-size: 40px;
 	}
 }
 

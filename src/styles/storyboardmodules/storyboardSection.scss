@@ -28,20 +28,26 @@
 	box-sizing: border-box;
 }
 .storyboard__section-title {
-	font-size: 48px;
+	font-size: 40px;
 	margin: 0;
 
 	@media (min-width: 768px) {
 		width: 50%;
-		font-size: 52px;
+		margin: 0;
 	}
 }
 
 .storyboard__section-description {
-	font-size: 24px;
+	padding-top: 50px;
+	font-size: 20px;
+
+	p {
+		&:first-of-type {
+			margin-top: 0;
+		}
+	}
 
 	@media (min-width: 768px) {
-		font-size: 28px;
 		padding-top: 20px;
 	}
 
@@ -69,12 +75,17 @@
 .storyboard__section-media-item {
 	&.lightbox-enabled {
 		cursor: pointer;
+		transition: opacity 400ms ease;
+
+		&:hover {
+			opacity: 0.8;
+		}
 	}
 	width: 100%;
 	max-width: calc(50% - 10px);
 	position: relative;
-
 	margin-top: 20px;
+
 	// Mobile Two Columns
 	&:nth-of-type(odd) {
 		margin-right: 10px;
@@ -167,7 +178,8 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	font-size: 24px;
+	font-size: 12px;
+	padding: 4px;
 	z-index: 2;
 	background-color: black;
 	display: flex;
@@ -176,9 +188,8 @@
 	align-items: center;
 
 	@media (min-width: 768px) {
-		font-size: 28px;
-		width: 50px;
-		height: 38px;
+		font-size: 16px;
+		padding: 5px;
 	}
 }
 
@@ -227,12 +238,11 @@
 	top: 20px;
 	left: 20px;
 	margin: 0;
-	font-size: 24px;
+	font-size: 20px;
 
 	@media (min-width: 1024px) {
 		top: 40px;
 		left: 40px;
-		font-size: 28px;
 	}
 }
 
@@ -275,7 +285,7 @@
 .storyboard__modal-title {
 	margin: 0;
 	padding-top: 20px;
-	font-size: 24px;
+	font-size: 20px;
 
 	@media (min-width: 1024px) {
 		padding-top: 40px;
