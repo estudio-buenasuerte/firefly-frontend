@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import cx from 'classnames';
-import Img from 'gatsby-image';
 import 'video-react/dist/video-react.css';
 import SanityMuxPlayer from 'sanity-mux-player';
 import { SwitchTransition, Transition } from 'react-transition-group';
@@ -68,25 +67,31 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 		setCurrentSlide(nextIndex);
 	};
 
+	const keyboardListener = event => {
+		console.log(event.code);
+		switch (event.code) {
+			case 'ArrowLeft':
+				goBack();
+				break;
+			case 'ArrowRight':
+				goNext();
+				break;
+			case 'Escape':
+				setLightBoxOpen(false);
+				break;
+			default:
+				break;
+		}
+	};
+
 	useEffect(() => {
-		window.addEventListener('keydown', event => {
-			if (isLightboxOpen) {
-				switch (event.code) {
-					case 'ArrowLeft':
-						goBack();
-						break;
-					case 'ArrowRight':
-						goNext();
-						break;
-					default:
-						break;
-				}
-			}
-		});
+		if (isLightboxOpen) {
+			window.addEventListener('keydown', keyboardListener);
+		}
 		return () => {
-			window.removeEventListener('keydown', () => {});
+			window.removeEventListener('keydown', keyboardListener);
 		};
-	}, []);
+	}, [isLightboxOpen, currentSlide]);
 
 	return (
 		<React.Fragment>
@@ -121,22 +126,29 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 										setCurrentSlide(index);
 									}
 								}}>
+								{lightbox && (
+									<span className='storyboard__section-media-index'>
+										{index < 11 ? `0${index + 1}` : index + 1}
+									</span>
+								)}
 								{_type === 'storyboardImage' ? (
-									<picture>
-										<source
-											srcSet={`${item.image.asset.url}?w=1600&auto=format`}
-											media='(min-width: 1000px)'
-										/>
-										<source
-											srcSet={`${item.image.asset.url}?w=1000&auto=format`}
-											media='(min-width: 600px)'
-										/>
-										<img
-											alt={'Project Image'}
-											src={`${item.image.asset.url}?w=400&auto=format`}
-											className=''
-										/>
-									</picture>
+									<div className='img-wrapper'>
+										<picture>
+											<source
+												srcSet={`${item.image.asset.url}?w=1600&auto=format`}
+												media='(min-width: 1000px)'
+											/>
+											<source
+												srcSet={`${item.image.asset.url}?w=1000&auto=format`}
+												media='(min-width: 600px)'
+											/>
+											<img
+												alt={item?.title}
+												src={`${item.image.asset.url}?w=400&auto=format`}
+												className=''
+											/>
+										</picture>
+									</div>
 								) : (
 									<SanityMuxPlayer
 										assetDocument={item.video.asset}
@@ -161,7 +173,15 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 							...TRANSITION_STYLES.default,
 							...TRANSITION_STYLES[status],
 						}}>
-						<button className='storyboard__modal-close' onClick={() => setLightBoxOpen(false)}>
+						<p className='storyboard__modal-index'>
+							{currentSlide < 11 ? `0${currentSlide + 1}` : currentSlide + 1}
+						</p>
+						<button
+							className='storyboard__modal-close'
+							onClick={() => {
+								setCurrentSlide(0);
+								setLightBoxOpen(false);
+							}}>
 							<svg
 								width='25'
 								height='25'
@@ -218,7 +238,7 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 											...SLIDE_TRANSITION_STYLES.default,
 											...SLIDE_TRANSITION_STYLES[status],
 										}}>
-										{media[currentSlide]._type == 'storyboardImage' ? (
+										{media[currentSlide]._type === 'storyboardImage' ? (
 											<picture>
 												<source
 													srcSet={`${media[currentSlide].image.asset.url}?w=1600&auto=format`}
@@ -229,7 +249,7 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 													media='(min-width: 600px)'
 												/>
 												<img
-													alt={'Project Image'}
+													alt={media[currentSlide]?.title}
 													src={`${media[currentSlide].image.asset.url}?w=400&auto=format`}
 													className=''
 												/>
@@ -245,7 +265,9 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 												playsInline={true}
 											/>
 										)}
-										{media[currentSlide].title && <p>{media[currentSlide].title}</p>}
+										{media[currentSlide].title && (
+											<p className='storyboard__modal-title'>{media[currentSlide].title}</p>
+										)}
 									</article>
 								)}
 							</Transition>

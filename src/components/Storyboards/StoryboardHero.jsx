@@ -10,8 +10,10 @@ const StoryboardHero = ({ title, name, hero }) => {
 				<img src={Logo} alt='Firefly Logo' />
 			</Link>
 			<Img fluid={hero.asset.fluid} />
-			<p className='storyboard__client'>Firefly x {name}</p>
-			<p className='storyboard__title'>{title}</p>
+			<div className='storyboard__hero-info'>
+				<p className='storyboard__client'>Firefly x {name}</p>
+				<p className='storyboard__title'>{title}</p>
+			</div>
 		</section>
 	);
 };

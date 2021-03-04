@@ -31,14 +31,28 @@
 		transform: translateY(-100%);
 	}
 }
+
+.storyboard__hero-info {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	background-image: linear-gradient(to bottom, transparent, #000000);
+
+	@media (min-width: 1024px) {
+		padding: 40px;
+	}
+}
+
 .storyboard__client,
 .storyboard__title {
-	position: absolute;
+	font-size: 28px;
 	margin: 0;
-	bottom: 20px;
 	@media (min-width: 1024px) {
-		bottom: 40px;
-		font-size: 28px;
+		font-size: 52px;
 	}
 }
 

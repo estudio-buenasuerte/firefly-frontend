@@ -295,32 +295,9 @@ const Index = () => {
 		autoplaySpeed: 5000,
 	};
 
-	const isImage = (url) => {
-		const ending = url.split('.')[url.split('.').length - 1];
-		let result;
-
-		switch (ending) {
-			case 'jpg':
-				result = true;
-				break;
-			case 'png':
-				result = true;
-				break;
-			case 'jpeg':
-				result = true;
-				break;
-			case 'gif':
-				result = true;
-				break;
-			default:
-				break;
-		}
-		return result;
-	};
-
 	return (
 		<Layout slimFooter={false}>
-			<SEO title="Home" />
+			<SEO title='Home' />
 			<HomeWrapper>
 				<HeroSection>
 					<VideoMask />
@@ -340,7 +317,7 @@ const Index = () => {
 				</HeroText>
 
 				<LottieSection>
-					<aside className="animation">
+					<aside className='animation'>
 						<VideoMask />
 						<Player
 							autoPlay={true}
@@ -348,17 +325,15 @@ const Index = () => {
 							playsInline={true}
 							muted={true}
 							src={Transition}
-							alt="transition"
+							alt='transition'
 						/>
 					</aside>
-					<aside className="section-info">
+					<aside className='section-info'>
 						{homeData.section1Heading && <h2>{homeData.section1Heading}</h2>}
-						{homeData._rawSection1Description && (
-							<BlockContent blocks={homeData._rawSection1Description} />
-						)}
+						{homeData._rawSection1Description && <BlockContent blocks={homeData._rawSection1Description} />}
 						{homeData.section1List.list && (
-							<List className="section-1">
-								{homeData.section1List.list.map((item) => (
+							<List className='section-1'>
+								{homeData.section1List.list.map(item => (
 									<li key={item}>{item}</li>
 								))}
 							</List>
@@ -368,29 +343,21 @@ const Index = () => {
 
 				<SliderSection>
 					<Slider {...sliderSettings}>
-						{homeData.heroAsset2.map((item) => (
-							<img
-								key={item._key}
-								src={item.asset.url}
-								alt="Firefly Drone Shows"
-							/>
+						{homeData.heroAsset2.map(item => (
+							<img key={item._key} src={item.asset.url} alt='Firefly Drone Shows' />
 						))}
 					</Slider>
 				</SliderSection>
 
 				<TextSection>
-					<aside className="title-wrapper">
-						{homeData.section2Heading && (
-							<h2 className="title">{homeData.section2Heading}</h2>
-						)}
+					<aside className='title-wrapper'>
+						{homeData.section2Heading && <h2 className='title'>{homeData.section2Heading}</h2>}
 					</aside>
-					<aside className="section-info">
-						{homeData._rawSection2Description && (
-							<BlockContent blocks={homeData._rawSection2Description} />
-						)}
+					<aside className='section-info'>
+						{homeData._rawSection2Description && <BlockContent blocks={homeData._rawSection2Description} />}
 						{homeData.section2List.list && (
-							<List className="section-1">
-								{homeData.section2List.list.map((item) => (
+							<List className='section-1'>
+								{homeData.section2List.list.map(item => (
 									<li key={item}>{item}</li>
 								))}
 							</List>
