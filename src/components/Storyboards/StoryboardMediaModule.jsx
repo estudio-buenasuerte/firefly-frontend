@@ -50,7 +50,7 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 	const goNext = () => {
 		let nextIndex = currentSlide + 1;
 
-		if (nextIndex >= media.length - 1) {
+		if (nextIndex >= media.length) {
 			nextIndex = 0;
 		}
 
