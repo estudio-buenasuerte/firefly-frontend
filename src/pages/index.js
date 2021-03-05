@@ -297,7 +297,7 @@ const Index = () => {
 
 	return (
 		<Layout slimFooter={false}>
-			<SEO title='Home' />
+			<SEO metaTitle='Home' />
 			<HomeWrapper>
 				<HeroSection>
 					<VideoMask />

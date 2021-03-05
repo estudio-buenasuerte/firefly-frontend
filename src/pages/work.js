@@ -54,21 +54,19 @@ const Work = () => {
 
 	const { _rawWorkList, workList } = data.allSanityWork.nodes[0];
 
-	let newList = workList.map((item) => {
-		return item.workMuxVideo?.hasOwnProperty('_key')
-			? _rawWorkList.find((raw) => raw._key === item._key)
-			: item;
+	let newList = workList.map(item => {
+		return item.workMuxVideo?.hasOwnProperty('_key') ? _rawWorkList.find(raw => raw._key === item._key) : item;
 	});
 
 	const [projectList] = useState(newList);
 
 	return (
 		<Layout>
-			<SEO title="Work" description="" />
+			<SEO metaTitle='Work' description='' />
 
 			{projectList && (
 				<WorkList>
-					{projectList.map((item) => {
+					{projectList.map(item => {
 						return (
 							<WorkAsset
 								key={item._key}

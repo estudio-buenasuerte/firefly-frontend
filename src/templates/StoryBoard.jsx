@@ -7,7 +7,7 @@ import StoryboardMediaModule from '../components/Storyboards/StoryboardMediaModu
 import StoryboardTextModule from '../components/Storyboards/StoryboardTextModule';
 
 const Storyboard = ({ pageContext }) => {
-	const { content = [] } = pageContext;
+	const { content = [], seo } = pageContext;
 
 	useScrollPosition(({ prevPos, currPos }) => {
 		const header = document.querySelector('.storyboard__header');
@@ -35,7 +35,7 @@ const Storyboard = ({ pageContext }) => {
 
 	return (
 		<React.Fragment>
-			<SEO title={pageContext.name} />
+			<SEO metaTitle={pageContext.name} {...seo} />
 			<main className='storyboard'>
 				<StoryboardHero title={pageContext.title} name={pageContext.name} hero={pageContext.hero} />
 				{content.map((section, index) => {

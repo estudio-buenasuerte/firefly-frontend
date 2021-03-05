@@ -348,7 +348,7 @@ const Options = () => {
 
 	return (
 		<Layout slimFooter={false}>
-			<SEO title='Options' />
+			<SEO metaTitle='Drone Show Options' />
 
 			<OptionsSection>
 				<OptionVidSection>

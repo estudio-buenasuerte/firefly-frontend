@@ -24,7 +24,27 @@ exports.createPages = async ({ graphql, actions }) => {
 							url
 						}
 					}
-					content: _rawContent(resolveReferences: { maxDepth: 10 })
+					content: _rawContent(resolveReferences: { maxDepth: 15 })
+					seo {
+						_key
+						metaTitle
+						metaKeywords
+						metaDescription
+						openGraphTitle
+						openGraphDescription
+						openGraphImage {
+							asset {
+								url
+							}
+						}
+						twitterTitle
+						twitterDescription
+						twitterImage {
+							asset {
+								url
+							}
+						}
+					}
 				}
 			}
 		}

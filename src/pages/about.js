@@ -7,12 +7,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import ArrowBlack from '../images/arrow-black.svg';
 import MailerService from '../util/mailer';
 import xss from 'xss';
-import {
-	Player,
-	ControlBar,
-	CurrentTimeDisplay,
-	VolumeMenuButton,
-} from 'video-react';
+import { Player, ControlBar, CurrentTimeDisplay, VolumeMenuButton } from 'video-react';
 
 const HeroSection = styled.section`
 	width: 100%;
@@ -311,7 +306,7 @@ const About = () => {
 		message: null,
 	});
 
-	const isImage = (url) => {
+	const isImage = url => {
 		const ending = url.split('.')[url.split('.').length - 1];
 		let result;
 
@@ -334,7 +329,7 @@ const About = () => {
 		return result;
 	};
 
-	const submitForm = (e) => {
+	const submitForm = e => {
 		e.preventDefault();
 		const { name, email, subject, message } = e.target;
 
@@ -353,7 +348,7 @@ const About = () => {
 			subject: xss(subject.value),
 			message: xss(message.value),
 		})
-			.then((res) => {
+			.then(res => {
 				name.value = '';
 				email.value = '';
 				subject.value = '';
@@ -361,7 +356,7 @@ const About = () => {
 
 				setFeedback({ success: true, message: 'Thanks for reaching out!' });
 			})
-			.catch((err) => {
+			.catch(err => {
 				setFeedback({
 					success: false,
 					message: 'Uh oh. Something went wrong.',
@@ -372,11 +367,11 @@ const About = () => {
 
 	return (
 		<Layout slimFooter={true}>
-			<SEO title="About" />
+			<SEO metaTitle='About' />
 
 			<HeroSection>
 				{isImage(aboutData.heroAsset.asset.url) ? (
-					<img src={aboutData.heroAsset.asset.url} alt="Firefly Drone Shows" />
+					<img src={aboutData.heroAsset.asset.url} alt='Firefly Drone Shows' />
 				) : (
 					<>
 						<VideoMask />
@@ -385,8 +380,7 @@ const About = () => {
 							autoPlay={true}
 							loop={true}
 							muted={true}
-							src={aboutData.heroAsset.asset.url}
-						>
+							src={aboutData.heroAsset.asset.url}>
 							<ControlBar autoHide={true}>
 								<CurrentTimeDisplay order={4.1} />
 								<VolumeMenuButton disabled />
@@ -399,20 +393,20 @@ const About = () => {
 			<HeroText>{aboutData.heroText && <h1>{aboutData.heroText}</h1>}</HeroText>
 			<AboutWrapper>
 				<AboutSection>
-					<aside className="title">
+					<aside className='title'>
 						<h2>{aboutData.aboutHeading}</h2>
 					</aside>
-					<aside className="about-details">
+					<aside className='about-details'>
 						<BlockContent blocks={aboutData._rawAboutDescription} />
 						{aboutData.contact && <List></List>}
 					</aside>
 				</AboutSection>
 				<AboutSection>
-					<aside className="title"></aside>
-					<aside className="about-details">
+					<aside className='title'></aside>
+					<aside className='about-details'>
 						<h3>Our shows are perfect for:</h3>
-						<List className="good">
-							{aboutData.goodForList.list.map((item) => (
+						<List className='good'>
+							{aboutData.goodForList.list.map(item => (
 								<li key={item}>{item}</li>
 							))}
 						</List>
@@ -423,14 +417,11 @@ const About = () => {
 						{/* <aside className="title">
               <h2>Select Clients:</h2>
             </aside> */}
-						<ClientList className="about-details client-list">
-							{aboutData.clientLogos.map((logo) => {
+						<ClientList className='about-details client-list'>
+							{aboutData.clientLogos.map(logo => {
 								return (
 									<ClientLogo key={logo._key}>
-										<img
-											src={logo.asset.url}
-											alt={logo.asset.originalFilename}
-										/>
+										<img src={logo.asset.url} alt={logo.asset.originalFilename} />
 									</ClientLogo>
 								);
 							})}
@@ -441,46 +432,26 @@ const About = () => {
 
 			<ConnectSection>
 				<h3>Let's Work Together</h3>
-				<Form name={'about'} onSubmit={submitForm} data-netlify="true">
-					<input type="hidden" name="form-name" value="about" />
-					<label htmlFor="name" className="invisible name">
+				<Form name={'about'} onSubmit={submitForm} data-netlify='true'>
+					<input type='hidden' name='form-name' value='about' />
+					<label htmlFor='name' className='invisible name'>
 						Name
 					</label>
-					<input type="text" name="name" className="name" placeholder="Name" />
-					<label htmlFor="email" className="invisible email">
+					<input type='text' name='name' className='name' placeholder='Name' />
+					<label htmlFor='email' className='invisible email'>
 						Email Address
 					</label>
-					<input
-						type="email"
-						name="email"
-						className="email"
-						placeholder="Email Address"
-					/>
-					<label htmlFor="subject" className="invisible subject">
+					<input type='email' name='email' className='email' placeholder='Email Address' />
+					<label htmlFor='subject' className='invisible subject'>
 						Subject
 					</label>
-					<input
-						type="text"
-						name="subject"
-						className="subject"
-						placeholder="Subject"
-					/>
-					<label htmlFor="message" className="invisible message">
+					<input type='text' name='subject' className='subject' placeholder='Subject' />
+					<label htmlFor='message' className='invisible message'>
 						Message
 					</label>
-					<textarea
-						type="text"
-						name="message"
-						className="message"
-						placeholder="Message"
-						resize="false"
-					/>
-					<button type="submit">Send Message</button>
-					{feedback.message && (
-						<p className={feedback.success ? 'success' : 'error'}>
-							{feedback.message}
-						</p>
-					)}
+					<textarea type='text' name='message' className='message' placeholder='Message' resize='false' />
+					<button type='submit'>Send Message</button>
+					{feedback.message && <p className={feedback.success ? 'success' : 'error'}>{feedback.message}</p>}
 				</Form>
 			</ConnectSection>
 		</Layout>
