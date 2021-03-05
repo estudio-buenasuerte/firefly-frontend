@@ -280,11 +280,18 @@
 }
 
 .storyboard__modal-slide {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	max-height: 100%;
 	text-align: center;
 
-	img {
+	img,
+	picture {
 		max-width: 100%;
-		width: 100%;
+		max-height: 100%;
+		object-fit: contain;
 	}
 }
 .storyboard__modal-title {
