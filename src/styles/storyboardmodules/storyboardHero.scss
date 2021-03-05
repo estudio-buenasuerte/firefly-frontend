@@ -5,10 +5,10 @@
 		height: 100vh;
 		overflow: hidden;
 	}
-}
-.gatsby-image-wrapper {
-	@media (min-width: 1024px) {
-		height: 100vh;
+	.gatsby-image-wrapper {
+		@media (min-width: 1024px) {
+			height: 100vh;
+		}
 	}
 }
 .storyboard__header {
