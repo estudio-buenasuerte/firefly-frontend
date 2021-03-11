@@ -10,6 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
 					slug {
 						current
 					}
+					password
 					hero {
 						asset {
 							fluid {

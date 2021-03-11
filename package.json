@@ -24,6 +24,7 @@
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-source-sanity": "^5.0.5",
     "gatsby-transformer-sharp": "^2.3.7",
+    "js-cookie": "^2.2.1",
     "keen-slider": "^5.4.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.3",

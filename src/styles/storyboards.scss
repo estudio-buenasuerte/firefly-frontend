@@ -1,2 +1,55 @@
 @import './storyboardmodules/storyboardHero.scss';
 @import './storyboardmodules/storyboardSection.scss';
+
+.storyboard__password {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.storyboard__password-form {
+	border-bottom: 1px solid #151515;
+	padding-bottom: 5px;
+	width: 85vw;
+	display: flex;
+
+	input,
+	label,
+	button {
+		font-size: 20px;
+		padding: 0;
+		background-color: transparent;
+		border: none;
+	}
+	label {
+		flex: 1;
+	}
+	input {
+		width: 100%;
+	}
+	button {
+		margin-left: auto;
+		padding: 0 5px;
+	}
+	input,
+	button {
+		&:focus,
+		&:visited {
+			outline: 1px dotted #151515;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		max-width: 500px;
+	}
+}
+
+.storyboard__error {
+	color: red;
+}
