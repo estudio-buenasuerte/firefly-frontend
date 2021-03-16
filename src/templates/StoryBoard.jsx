@@ -103,11 +103,6 @@ const Storyboard = ({ pageContext }) => {
 					</div>
 				)}
 			</Transition>
-			{/* {!passwordCorrect && (
-				<div className='storyboard__password'>
-
-				</div>
-			)} */}
 
 			<Transition in={passwordCorrect} mountOnEnter unmountOnExit appear timeout={TRANSITION_DURATION}>
 				{status => (
@@ -117,7 +112,12 @@ const Storyboard = ({ pageContext }) => {
 							...TRANSITION_STYLES.default,
 							...TRANSITION_STYLES[status],
 						}}>
-						<StoryboardHero title={pageContext.title} name={pageContext.name} hero={pageContext.hero} />
+						<StoryboardHero
+							title={pageContext.title}
+							name={pageContext.name}
+							hero={pageContext.hero}
+							heroVideo={pageContext.heroVideo}
+						/>
 						{content.map((section, index) => {
 							return section._type === 'storyboardText' ? (
 								<StoryboardTextModule index={index} key={section._key} {...section} />

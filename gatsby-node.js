@@ -25,6 +25,19 @@ exports.createPages = async ({ graphql, actions }) => {
 							url
 						}
 					}
+					_rawHeroVideo(resolveReferences: { maxDepth: 10 })
+					heroVideo {
+						_key
+						asset {
+							_key
+							_type
+							assetId
+							filename
+							thumbTime
+							playbackId
+							status
+						}
+					}
 					content: _rawContent(resolveReferences: { maxDepth: 15 })
 					seo {
 						_key

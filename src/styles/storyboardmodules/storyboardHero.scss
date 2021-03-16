@@ -10,6 +10,18 @@
 			height: 100vh;
 		}
 	}
+	.storyboard__hero-video {
+		video {
+			@media (min-width: 1024px) {
+				object-fit: cover;
+				width: 100vw;
+				height: 100vh;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+	}
 }
 .storyboard__header {
 	position: fixed;
