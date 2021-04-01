@@ -111,7 +111,6 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 					})}>
 					{media.map((item, index) => {
 						const { _type } = item;
-
 						return (
 							<li
 								key={item._key}
@@ -154,8 +153,8 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 										assetDocument={item.video.asset}
 										autoload={true}
 										autoplay={true}
-										showControls={false}
-										muted={false}
+										muted={!item.sound}
+										showControls={item.sound === true}
 										loop={true}
 										playsInline={true}
 									/>
@@ -260,7 +259,8 @@ const StoryboardMediaModule = ({ title, description, index, layout, lightbox, me
 												autoload={true}
 												autoplay={true}
 												showControls={true}
-												muted={false}
+												muted={media[currentSlide].sound !== true}
+												showControls={media[currentSlide].sound}
 												loop={true}
 												playsInline={true}
 											/>
