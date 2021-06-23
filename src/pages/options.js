@@ -8,6 +8,7 @@ import Saturn200 from '../images/200_800_V7_Black.mp4';
 import Saturn300 from '../images/300_800_V7_Black.mp4';
 import BlockContent from '@sanity/block-content-to-react';
 import { Player } from 'video-react';
+import SanityMuxPlayer from 'sanity-mux-player';
 
 const OptionsSection = styled.section`
 	display: flex;
@@ -301,44 +302,47 @@ const Options = () => {
 		{
 			allSanityOptions {
 				nodes {
-					oneHundredTitle
-					twoHundredTitle
-					threeHundredTitle
-					_rawCustomDescription
-					_rawOneHundredDronesDescription
-					oneHundredDronesList {
-						list
+				oneHundredTitle
+				twoHundredTitle
+				threeHundredTitle
+				_rawCustomDescription
+				_rawOneHundredDronesDescription
+				oneHundredDronesList {
+					list
+				}
+				_rawTwoHundredDronesDescription
+				twoHundredDronesList {
+					list
+				}
+				_rawThreeHundredDronesDescription
+				threeHundredDronesList {
+					list
+				}
+				customTitle
+				oneHundredDroneImage {
+					asset {
+					_type
+					url
+					mimeType
 					}
-					_rawTwoHundredDronesDescription
-					twoHundredDronesList {
-						list
+				}
+				twoHundredDroneImage {
+					_type
+					asset {
+					url
+					mimeType
 					}
-					_rawThreeHundredDronesDescription
-					threeHundredDronesList {
-						list
+				}
+				threeHundredDroneImage {
+					_type
+					asset {
+					url
+					mimeType
 					}
-					customTitle
-					oneHundredDroneImage {
-						asset {
-							_type
-							url
-							mimeType
-						}
-					}
-					twoHundredDroneImage {
-						_type
-						asset {
-							url
-							mimeType
-						}
-					}
-					threeHundredDroneImage {
-						_type
-						asset {
-							url
-							mimeType
-						}
-					}
+				}
+				oneHundredDroneVideo: _rawOneHundredDroneVideo(resolveReferences: {maxDepth: 10})
+				twoHundredDroneVideo: _rawTwoHundredDroneVideo(resolveReferences: {maxDepth: 10})
+				threeHundredDroneVideo: _rawThreeHundredDroneVideo(resolveReferences: {maxDepth: 10})
 				}
 			}
 		}
@@ -395,19 +399,19 @@ const Options = () => {
 			<ImageOnLeft>
 				{optionsData.oneHundredDroneImage && (
 					<aside className='img'>
-						{optionsData.oneHundredDroneImage.asset.mimeType.includes('image') ? (
+						{optionsData.oneHundredDroneImage.asset.mimeType.includes('image') && (
 							<img src={optionsData.oneHundredDroneImage.asset.url} alt='100 Drones' />
-						) : (
-							<div style={{ position: 'relative' }}>
-								<VideoMask />
-								<Player
-									playsInline={true}
-									autoPlay={true}
-									loop={true}
-									src={optionsData.oneHundredDroneImage.asset.url}
-									muted={true}
-								/>
-							</div>
+						) }
+						{optionsData.oneHundredDroneVideo && (
+							<SanityMuxPlayer
+								assetDocument={optionsData.oneHundredDroneVideo.asset}
+								autoload={true}
+								autoplay={true}
+								showControls={true}
+								muted={false}
+								loop={true}
+								playsInline={true}
+							/>
 						)}
 					</aside>
 				)}
@@ -428,19 +432,19 @@ const Options = () => {
 				)}
 				{optionsData.twoHundredDroneImage && (
 					<aside className='img'>
-						{optionsData.twoHundredDroneImage.asset.mimeType.includes('image') ? (
+						{optionsData.twoHundredDroneImage.asset.mimeType.includes('image') && (
 							<img src={optionsData.twoHundredDroneImage.asset.url} alt='200 Drones' />
-						) : (
-							<div style={{ position: 'relative' }}>
-								<VideoMask />
-								<Player
-									playsInline={true}
-									autoPlay={true}
-									loop={true}
-									src={optionsData.twoHundredDroneImage.asset.url}
-									muted={true}
-								/>
-							</div>
+						) }
+						{optionsData.twoHundredDroneVideo && (
+							<SanityMuxPlayer
+								assetDocument={optionsData.twoHundredDroneVideo.asset}
+								autoload={true}
+								autoplay={true}
+								showControls={true}
+								muted={false}
+								loop={true}
+								playsInline={true}
+							/>
 						)}
 					</aside>
 				)}
@@ -449,19 +453,19 @@ const Options = () => {
 			<ImageOnLeft>
 				{optionsData.threeHundredDroneImage && (
 					<aside className='img'>
-						{optionsData.threeHundredDroneImage.asset.mimeType.includes('image') ? (
-							<img src={optionsData.threeHundredDroneImage.asset.url} alt='300 Drones' />
-						) : (
-							<div style={{ position: 'relative' }}>
-								<VideoMask />
-								<Player
-									playsInline={true}
-									autoPlay={true}
-									loop={true}
-									src={optionsData.threeHundredDroneImage.asset.url}
-									muted={true}
-								/>
-							</div>
+						{optionsData.threeHundredDroneImage.asset.mimeType.includes('image') && (
+							<img src={optionsData.threeHundredDroneImage.asset.url} alt='200 Drones' />
+						) }
+						{optionsData.threeHundredDroneVideo && (
+							<SanityMuxPlayer
+								assetDocument={optionsData.threeHundredDroneVideo.asset}
+								autoload={true}
+								autoplay={true}
+								showControls={true}
+								muted={false}
+								loop={true}
+								playsInline={true}
+							/>
 						)}
 					</aside>
 				)}
