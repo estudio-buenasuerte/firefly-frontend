@@ -350,6 +350,9 @@ const Options = () => {
 
 	const [optionsData] = useState(data.allSanityOptions.nodes[0]);
 
+	console.table(optionsData)
+	console.table(optionsData.oneHundredDroneVideo.asset)
+
 	return (
 		<Layout slimFooter={false}>
 			<SEO metaTitle='Drone Show Options' />
@@ -397,9 +400,9 @@ const Options = () => {
 			</StockVSCustom>
 
 			<ImageOnLeft>
-				{optionsData.oneHundredDroneImage && (
+				{(optionsData.oneHundredDroneImage || optionsData.oneHundredDroneVideo) && (
 					<aside className='img'>
-						{optionsData.oneHundredDroneImage.asset.mimeType.includes('image') && (
+						{optionsData.oneHundredDroneImage && optionsData.oneHundredDroneImage.asset.mimeType.includes('image') && (
 							<img src={optionsData.oneHundredDroneImage.asset.url} alt='100 Drones' />
 						) }
 						{optionsData.oneHundredDroneVideo && (
@@ -430,9 +433,9 @@ const Options = () => {
 						<BlockContent blocks={optionsData._rawTwoHundredDronesDescription} serializers={serializers} />
 					</aside>
 				)}
-				{optionsData.twoHundredDroneImage && (
+				{(optionsData.twoHundredDroneImage || optionsData.twoHundredDroneVideo) && (
 					<aside className='img'>
-						{optionsData.twoHundredDroneImage.asset.mimeType.includes('image') && (
+						{optionsData.twoHundredDroneImage && optionsData.twoHundredDroneImage.asset.mimeType.includes('image') && (
 							<img src={optionsData.twoHundredDroneImage.asset.url} alt='200 Drones' />
 						) }
 						{optionsData.twoHundredDroneVideo && (
@@ -451,9 +454,9 @@ const Options = () => {
 			</ImageOnRight>
 
 			<ImageOnLeft>
-				{optionsData.threeHundredDroneImage && (
+				{(optionsData.threeHundredDroneImage || optionsData.threeHundredDroneVideo) && (
 					<aside className='img'>
-						{optionsData.threeHundredDroneImage.asset.mimeType.includes('image') && (
+						{optionsData.threeHundredDroneImage && optionsData.threeHundredDroneImage.asset.mimeType.includes('image') && (
 							<img src={optionsData.threeHundredDroneImage.asset.url} alt='200 Drones' />
 						) }
 						{optionsData.threeHundredDroneVideo && (
